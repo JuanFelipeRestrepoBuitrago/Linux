@@ -5,65 +5,65 @@
 
 ## Installing Python versions
 - Use `pyenv install <version>` to install the desired Python version, e.g., `pyenv install 3.9.5`.
-```
+```bash
 pyenv install <version>
 ```
 
 ## Setting the global Python version
 - Set the global Python version with `pyenv global <version>`, e.g., `pyenv global 3.9.5`.
-```
+```bash
 pyenv global <version>
 ```
 
 ## Setting the local Python version
 - Set the local Python version with `pyenv local <version>` in your project directory.
-```
+```bash
 pyenv local <version>
 ```
 
 ## Listing installed Python versions
 - List all installed Python versions with `pyenv versions`.
-```
+```bash
 pyenv versions
 ```
 
 ## Listing available Python versions
 - List all available Python versions with `pyenv install --list`.
-```
+```bash
 pyenv install --list
 ```
 
 ## Using a specific Python version
 - Use a specific Python version in the current shell session with `pyenv shell <version>`, e.g., `pyenv shell 3.9.5`.
-```
+```bash
 pyenv shell <version>
 ```
 
 ## Uninstalling Python versions
 - Uninstall a specific Python version with `pyenv uninstall <version>`, e.g., `pyenv uninstall 3.9.5`.
-```
+```bash
 pyenv uninstall <version>
 ```
 
 ## Creating virtual environments
 - Create a virtual environment with `pyenv virtualenv <version> <env_name>`, e.g., `pyenv virtualenv 3.9.5 myenv`.
-```
+```bash
 pyenv virtualenv <version> <env_name>
 ```
 
 ## Activating and deactivating virtual environments
 - Activate a virtual environment with `pyenv activate <env_name>` and deactivate with `pyenv deactivate`.
-```
+```bash
 pyenv activate <env_name>
 ```
-```
+```bash
 pyenv deactivate
 ```
 
 
 ## Removing virtual environments
 - Remove a virtual environment with `pyenv uninstall <env_name>`.
-```
+```bash
 pyenv uninstall <env_name>
 ```
 
