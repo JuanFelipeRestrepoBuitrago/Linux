@@ -57,7 +57,7 @@ if [ -f ~/.bash_aliases ]; then
 fi
 ```
 
-This will automatically load your custom aliases from the `.bash_aliases` file when you start a new shell session.
+This will automatically load your custom aliases from the `.bash_aliases` file when you start a new shell session
 
 ## File content copy
 ```bash
