@@ -110,6 +110,12 @@ alias py3=python3
 
 # Browser
 alias edge='/mnt/c/Program\ Files\ \(x86\)/Microsoft/Edge/Application/msedge.exe'
+
+# GitHub Copilot
+alias ghc='gh copilot'
+alias ghcs='gh copilot suggest'
+alias ghce='gh copilot explain'
+alias ghca='gh copilot alias'
 ```
 
 ## File content copy zsh_aliases
@@ -162,4 +168,10 @@ alias py3=python3
 
 # Browser
 alias edge='/mnt/c/Program\ Files\ \(x86\)/Microsoft/Edge/Application/msedge.exe'
+
+# GitHub Copilot
+alias ghc='gh copilot'
+alias ghcs='gh copilot suggest'
+alias ghce='gh copilot explain'
+alias ghca='gh copilot alias'
 ```
