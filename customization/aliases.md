@@ -16,6 +16,7 @@
 - `alias h='history'`
 - `alias j='jobs -l'`
 - `alias clip='clip.exe' # Copy to clipboard`
+- `alias copy='clip.exe' # Copy to clipboard`
 
 ## System Aliases
 - `alias path='echo $PATH'`
@@ -39,6 +40,9 @@
 - `alias gb='git branch'`
 - `alias gpl='git pull'`
 - `alias gph='git push'`
+
+## Browser
+- `alias edge='/mnt/c/Program\ Files\ \(x86\)/Microsoft/Edge/Application/msedge.exe'`
 
 # Add aliases and apply them immediately
 
@@ -80,6 +84,7 @@ alias cls='clear'  # clear the terminal screen
 alias h='history'
 alias j='jobs -l'
 alias clip='clip.exe' # Copy to clipboard
+alias copy='clip.exe' # Copy to clipboard
 alias lsa='ls -al'
 
 # System Aliases
@@ -132,6 +137,7 @@ alias cls='clear'  # clear the terminal screen
 alias h='history'
 alias j='jobs -l'
 alias clip='clip.exe' # Copy to clipboard
+alias copy='clip.exe' # Copy to clipboard
 alias lsa='ls -al'
 
 # System Aliases
