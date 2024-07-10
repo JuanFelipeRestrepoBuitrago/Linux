@@ -4,7 +4,9 @@
 
 - [Introduction](#introduction)
 - [Installing Zsh](#installing-zsh)
-
+  - [Zsh Themes](#zsh-themes)
+    - [Murilasso](#murilasso)
+    - [Pure](#pure)
 - [Custom aliases](#custom-aliases)
   - [Control cd command behavior aliases](#control-cd-command-behavior-aliases)
   - [Shorcut Aliases](#shorcut-aliases)
@@ -32,6 +34,10 @@ Zsh is a powerful shell that provides many features and customization options. T
 ```bash
 sudo apt update && sudo apt install zsh
 ```
+- This step is optional but recommended. Install Oh My Zsh to get a lot of features and themes.
+```bash
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
 2. Change the default shell to Zsh (optional)
 ```bash
 sudo chsh -s $(which zsh)
@@ -42,9 +48,43 @@ if [ -t 1 ]; then
     exec zsh
 fi
 ```
-Command to add lines to file:
 ```bash
+# Command to add lines to file:
 echo 'if [ -t 1 ]; then' >> ~/.bashrc && echo '    exec zsh' >> ~/.bashrc && echo 'fi' >> ~/.bashrc
+```
+4. Add configuration to the `.zshrc` file. I recommend using the following configuration and have vim already installed.
+```bash
+
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+# some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+# Custom Aliases
+if [ -f ~/.zsh_aliases ]; then
+    . ~/.zsh_aliases
+fi
+
+export EDITOR=vim
+export VISUAL=vim
+
+# Terminal Customization
+
+```
+```bash
+# Command to add lines to file:
+echo '' >> ~/.zshrc && echo 'if [ -x /usr/bin/dircolors ]; then' >> ~/.zshrc && echo '    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"' >> ~/.zshrc && echo '    alias ls='ls --color=auto'' >> ~/.zshrc && echo '    #alias dir='dir --color=auto'' >> ~/.zshrc && echo '    #alias vdir='vdir --color=auto'' >> ~/.zshrc && echo '' >> ~/.zshrc && echo '    alias grep='grep --color=auto'' >> ~/.zshrc && echo '    alias fgrep='fgrep --color=auto'' >> ~/.zshrc && echo '    alias egrep='egrep --color=auto'' >> ~/.zshrc && echo 'fi' >> ~/.zshrc && echo '' >> ~/.zshrc && echo '# some more ls aliases' >> ~/.zshrc && echo 'alias ll='ls -alF'' >> ~/.zshrc && echo 'alias la='ls -A'' >> ~/.zshrc && echo 'alias l='ls -CF'' >> ~/.zshrc && echo '' >> ~/.zshrc && echo '# Custom Aliases' >> ~/.zshrc && echo '' >> ~/.zshrc && echo 'if [ -f ~/.zsh_aliases ]; then' >> ~/.zshrc && echo '    . ~/.zsh_aliases' >> ~/.zshrc && echo 'fi' >> ~/.zshrc && echo '' >> ~/.zshrc && echo 'export EDITOR=vim' >> ~/.zshrc && echo 'export VISUAL=vim' >> ~/.zshrc && echo '' >> ~/.zshrc && echo '# Terminal Customization' >> ~/.zshrc && echo '' >> ~/.zshrc
 ```
 
 
@@ -65,16 +105,15 @@ npm install --global pure-prompt
 ```
 2. Add the following lines to `.zshrc` file
 ```bash
-# Terminal Customization
-
 ## Theme
 autoload -U promptinit; promptinit
 prompt pure
 ```
-Command to add lines to file:
 ```bash
-echo '# Terminal Customization' >> ~/.zshrc && echo '' >> ~/.zshrc && echo '## Theme' >> ~/.zshrc && echo 'autoload -U promptinit; promptinit' >> ~/.zshrc && echo 'prompt pure' >> ~/.zshrc
+# Command to add lines to file:
+echo '## Theme' >> ~/.zshrc && echo 'autoload -U promptinit; promptinit' >> ~/.zshrc && echo 'prompt pure' >> ~/.zshrc
 ```
+3. Restart the terminal or run `source ~/.zshrc` to apply the changes.
 
 ## Custom aliases
 
@@ -95,6 +134,7 @@ echo '# Terminal Customization' >> ~/.zshrc && echo '' >> ~/.zshrc && echo '## T
 - `alias j='jobs -l'`
 - `alias clip='clip.exe' # Copy to clipboard`
 - `alias copy='clip.exe' # Copy to clipboard`
+- `alias lsa='colorls -al'`
 
 ### System Aliases
 - `alias path='echo $PATH'`
@@ -163,7 +203,7 @@ alias h='history'
 alias j='jobs -l'
 alias clip='clip.exe' # Copy to clipboard
 alias copy='clip.exe' # Copy to clipboard
-alias lsa='ls -al'
+alias lsa='colorls -al'
 
 # System Aliases
 alias path='echo $PATH'
@@ -216,7 +256,7 @@ alias h='history'
 alias j='jobs -l'
 alias clip='clip.exe' # Copy to clipboard
 alias copy='clip.exe' # Copy to clipboard
-alias lsa='ls -al'
+alias lsa='colorls -al'
 
 # System Aliases
 alias path='echo $PATH'
@@ -278,4 +318,25 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/p
 ```bash
 plugins=(... zsh-syntax-highlighting)
 ```
+
+### Fzf
+
+1. Install Fzf.
+```bash
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
+```
+2. Add the plugin in the `.zshrc` file. Add the following line to the `.zshrc` file.
+```bash
+## Enable fuzzy completion
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+## Use fuzzy completion for Zsh history
+bindkey '^[[A' history-beginning-search-backward
+bindkey '^[[B' history-beginning-search-forward
+```
+```bash
+# Command to add lines to file:
+echo '## Enable fuzzy completion' >> ~/.zshrc && echo '[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh' >> ~/.zshrc && echo '' >> ~/.zshrc && echo '## Use fuzzy completion for Zsh history' >> ~/.zshrc && echo "bindkey '^[[A' history-beginning-search-backward" >> ~/.zshrc && echo "bindkey '^[[B' history-beginning-search-forward" >> ~/.zshrc
+```
+
 
