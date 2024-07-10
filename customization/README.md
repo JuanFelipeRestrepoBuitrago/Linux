@@ -1,0 +1,281 @@
+# Customizing the Linux Terminal
+
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Installing Zsh](#installing-zsh)
+
+- [Custom aliases](#custom-aliases)
+  - [Control cd command behavior aliases](#control-cd-command-behavior-aliases)
+  - [Shorcut Aliases](#shorcut-aliases)
+  - [System Aliases](#system-aliases)
+  - [Update Debian Linux server Aliases](#update-debian-linux-server-aliases)
+  - [Vim aliases](#vim-aliases)
+  - [Git Aliases](#git-aliases)
+  - [Browser](#browser)
+- [Add aliases and apply them immediately](#add-aliases-and-apply-them-immediately)
+- [File content copy bash_aliases](#file-content-copy-bash_aliases)
+- [File content copy zsh_aliases](#file-content-copy-zsh_aliases)
+- [Plugins](#plugins)
+  - [List of plugins](#list-of-plugins)
+
+## Introduction
+
+The terminal is a powerful tool that allows you to interact with your computer using text commands. By customizing the terminal, you can make it more efficient and enjoyable to use. In this guide, we will cover some common ways to customize the terminal, including changing the prompt, adding aliases, and installing plugins.
+
+## Zsh
+
+Zsh is a powerful shell that provides many features and customization options. To install Zsh on your system, you can use the package manager that comes with your distribution. For example, on Debian-based systems, you can install Zsh using the following command:
+
+### Installing Zsh
+1. Install Zsh on Debian-based systems
+```bash
+sudo apt update && sudo apt install zsh
+```
+2. Change the default shell to Zsh (optional)
+```bash
+sudo chsh -s $(which zsh)
+```
+3. Configure Bash to start zsh to avoid problems. Add the following line to the `~/.bashrc` file
+```bash
+if [ -t 1 ]; then
+    exec zsh
+fi
+```
+Command to add lines to file:
+```bash
+echo 'if [ -t 1 ]; then' >> ~/.bashrc && echo '    exec zsh' >> ~/.bashrc && echo 'fi' >> ~/.bashrc
+```
+
+
+### Zsh Themes
+Zsh comes with a variety of themes that you can use to customize the appearance of your terminal. To change the theme, you can set the `ZSH_THEME` variable in your `.zshrc` file. 
+
+#### Murilasso
+
+In the `.zshrc` file change the `ZSH_THEME` variable for `murilasso`.
+
+#### Pure
+
+For this theme you must have nodejs installed. [GUIDE](https://github.com/JuanFelipeRestrepoBuitrago/Linux/blob/main/programming_languages/nodejs_help.md)
+
+1. Install the Pure theme
+```bash
+npm install --global pure-prompt
+```
+2. Add the following lines to `.zshrc` file
+```bash
+# Terminal Customization
+
+## Theme
+autoload -U promptinit; promptinit
+prompt pure
+```
+Command to add lines to file:
+```bash
+echo '# Terminal Customization' >> ~/.zshrc && echo '' >> ~/.zshrc && echo '## Theme' >> ~/.zshrc && echo 'autoload -U promptinit; promptinit' >> ~/.zshrc && echo 'prompt pure' >> ~/.zshrc
+```
+
+## Custom aliases
+
+### Control cd command behavior aliases
+- `alias ..='cd ..'`
+- `alias ...='cd ../../'`
+- `alias ....='cd ../../../'`
+- `alias .....='cd ../../../../'`
+- `alias .1='cd ..'`
+- `alias .2='cd ../../'`
+- `alias .3='cd ../../../'`
+- `alias .4='cd ../../../../'`
+- `alias .5='cd ../../../../../'`
+
+### Shorcut Aliases
+- `alias cls='clear'  # clear the terminal screen`
+- `alias h='history'`
+- `alias j='jobs -l'`
+- `alias clip='clip.exe' # Copy to clipboard`
+- `alias copy='clip.exe' # Copy to clipboard`
+
+### System Aliases
+- `alias path='echo $PATH'`
+- `alias reload='source ~/.bashrc'`
+- `alias reload='source ~/.zshrc'` # for zsh
+
+### Update Debian Linux server Aliases
+- `alias update='sudo apt-get update && sudo apt-get upgrade' # update on one command`
+
+### Vim aliases
+- `alias vi=vim`
+- `alias svi='sudo vi'`
+- `alias vis='vim "+set si"'`
+- `alias edit='vim'`
+
+### Git Aliases
+- `alias gs='git status'`
+- `alias ga='git add'`
+- `alias gco='git commit -m'`
+- `alias gch='git checkout'`
+- `alias gb='git branch'`
+- `alias gpl='git pull'`
+- `alias gph='git push'`
+
+### Browser
+- `alias edge='/mnt/c/Program\ Files\ \(x86\)/Microsoft/Edge/Application/msedge.exe'`
+
+## Add aliases and apply them immediately
+
+To add a new alias, you can define it in the `.bashrc` file and then apply the changes by running `source ~/.bashrc` or `. ~/.bashrc`. This will make the new alias available in the current shell session.
+
+Alternatively, you can define an alias directly in the terminal session by using the `alias` command followed by the alias definition. For example:
+
+```bash
+alias ll='ls -alF'
+```
+
+You also can create a .bash_aliases file in your home directory and add your custom aliases there. Then, include the following line in your `.bashrc` file to load the `.bash_aliases` file:
+
+```bash
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+```
+
+This will automatically load your custom aliases from the `.bash_aliases` file when you start a new shell session
+
+## File content copy bash_aliases
+```bash
+# Custom aliases
+
+# Control cd command behavior aliases
+alias ..='cd ..'
+alias ...='cd ../../'
+alias ....='cd ../../../'
+alias .....='cd ../../../../'
+alias .1='cd ..'
+alias .2='cd ../../'
+alias .3='cd ../../../'
+alias .4='cd ../../../../'
+alias .5='cd ../../../../../'
+
+# Shorcut Aliases
+alias cls='clear'  # clear the terminal screen
+alias h='history'
+alias j='jobs -l'
+alias clip='clip.exe' # Copy to clipboard
+alias copy='clip.exe' # Copy to clipboard
+alias lsa='ls -al'
+
+# System Aliases
+alias path='echo $PATH'
+alias reload='source ~/.bashrc'
+
+# Update Debian Linux server Aliases
+alias update='sudo apt-get update && sudo apt-get upgrade' # update on one command
+
+# Vim aliases
+alias vi=vim
+alias svi='sudo vi'
+alias vis='vim "+set si"'
+alias edit='vim'
+
+# Git Aliases
+alias gs='git status'
+alias ga='git add'
+alias gco='git commit -m'
+alias gch='git checkout'
+alias gb='git branch'
+alias gpl='git pull'
+alias gph='git push'
+
+# Python Aliases
+alias py=python
+alias py3=python3
+
+# Browser
+alias edge='/mnt/c/Program\ Files\ \(x86\)/Microsoft/Edge/Application/msedge.exe'
+```
+
+## File content copy zsh_aliases
+```bash
+# Custom aliases
+
+# Control cd command behavior aliases
+alias ..='cd ..'
+alias ...='cd ../../'
+alias ....='cd ../../../'
+alias .....='cd ../../../../'
+alias .1='cd ..'
+alias .2='cd ../../'
+alias .3='cd ../../../'
+alias .4='cd ../../../../'
+alias .5='cd ../../../../../'
+
+# Shorcut Aliases
+alias cls='clear'  # clear the terminal screen
+alias h='history'
+alias j='jobs -l'
+alias clip='clip.exe' # Copy to clipboard
+alias copy='clip.exe' # Copy to clipboard
+alias lsa='ls -al'
+
+# System Aliases
+alias path='echo $PATH'
+alias reload='source ~/.zshrc'
+
+# Update Debian Linux server Aliases
+alias update='sudo apt-get update && sudo apt-get upgrade' # update on one command
+
+# Vim aliases
+alias vi=vim
+alias svi='sudo vi'
+alias vis='vim "+set si"'
+alias edit='vim'
+
+# Git Aliases
+alias gs='git status'
+alias ga='git add'
+alias gco='git commit -m'
+alias gch='git checkout'
+alias gb='git branch'
+alias gpl='git pull'
+alias gph='git push'
+
+# Python Aliases
+alias py=python
+alias py3=python3
+
+# Browser
+alias edge='/mnt/c/Program\ Files\ \(x86\)/Microsoft/Edge/Application/msedge.exe'
+```
+
+## Plugins
+
+### List of plugins
+- [zsh-autosuggestions](#zsh-autosuggestions)
+- [zsh-syntax-highlighting](#zsh-syntax-highlighting)
+
+### zsh-autosuggestions
+
+Plugin to autocomplete commands based on the history of the terminal.
+1. Clone the repository.
+```bash
+git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+```
+2. Add the plugin in the `.zshrc` file.
+```bash
+plugins=(... zsh-autosuggestions)
+```
+
+### zsh-syntax-highlighting
+
+Plugin to highlight written commands in green for existing commands and red for non-existent commands.
+
+1. Clone the repository.
+```bash
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+```
+2. Add the plugin in the `.zshrc` file.
+```bash
+plugins=(... zsh-syntax-highlighting)
+```
+
