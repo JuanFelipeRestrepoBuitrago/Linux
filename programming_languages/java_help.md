@@ -3,6 +3,31 @@
 ## Installation of SDKMAN!
 - Install `SDKMAN!` by following the instructions on the [SDKMAN! website](https://sdkman.io/install).
 
+### Personal Instalation
+
+1. Install dependencies by running the following command:
+```bash 
+sudo apt install -y zip unzip
+```
+2. Install `SDKMAN!` by running the following command:
+```bash
+curl -s "https://get.sdkman.io" | bash
+```
+3. Add the following lines to your `~/.bashrc`, `~/.bash_profile`, or `~/.zshrc` file to load `SDKMAN!` into your shell:
+```bash
+# Java Install
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+```
+```bash
+# Command to add lines to file .zshrc
+echo '# Java Install' >> ~/.zshrc && echo '' >> ~/.zshrc && echo '#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!' >> ~/.zshrc && echo 'export SDKMAN_DIR="$HOME/.sdkman"' >> ~/.zshrc && echo '[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"' >> ~/.zshrc
+```
+
+4. Restart your terminal or run `source ~/.bashrc`, `source ~/.bash_profile`, or `source ~/.zshrc` to apply the changes.
+
 ## Installing Java versions
 - Use `sdk install java <version>` to install the desired Java version, e.g., `sdk install java 11.0.12-zulu`.
 ```bash

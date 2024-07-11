@@ -3,6 +3,25 @@
 ## Installation of nvm
 - Install `nvm` by following the instructions on the [nvm GitHub page](https://github.com/nvm-sh/nvm).
 
+### Personal Instalation
+
+1. Run the following command to install `nvm`:
+```bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+```
+2. Load `nvm` into your shell, by copying the following line into your `~/.bashrc`, `~/.bash_profile`, or `~/.zshrc` file:
+```bash
+# NodeJS Package Manager
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+```
+```bash
+# Command to add lines to file .zshrc
+echo '# NodeJS Package Manager' >> ~/.zshrc && echo 'export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"' >> ~/.zshrc && echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm' >> ~/.zshrc && echo '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion' >> ~/.zshrc
+```
+3. Restart your terminal or run `source ~/.bashrc`, `source ~/.bash_profile`, or `source ~/.zshrc` to apply the changes.
+
 ## Installing Node.js versions
 - Use `nvm install <version>` to install the desired Node.js version, e.g., `nvm install 14.17.0`.
 ```bash

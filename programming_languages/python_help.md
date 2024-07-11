@@ -3,6 +3,32 @@
 ## Installation of pyenv
 - Install `pyenv` using your package manager or by following the instructions on the [pyenv GitHub page](https://github.com/pyenv/pyenv).
 
+### Personal Instalation
+
+1. Run the following command to install `pyenv` dependencies:
+```bash
+sudo apt install -y make build-essential libssl-dev zlib1g-dev libbz2-dev \
+libreadline-dev libsqlite3-dev wget curl llvm libncurses-dev \
+xz-utils tk-dev libffi-dev liblzma-dev python3-openssl git
+```
+2. Install `pyenv` by running the following commands:
+```bash
+curl https://pyenv.run | bash
+```
+3. Load `pyenv` into your shell by copying the following lines into your `~/.bashrc`, `~/.bash_profile`, or `~/.zshrc` file:
+```bash
+# Python Package Manager
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+```
+```bash
+# Command to add lines to file .zshrc
+echo '# Python Package Manager' >> ~/.zshrc && echo 'export PATH="$HOME/.pyenv/bin:$PATH"' >> ~/.zshrc && echo 'eval "$(pyenv init --path)"' >> ~/.zshrc && echo 'eval "$(pyenv init -)"' >> ~/.zshrc && echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.zshrc
+```
+4. Restart your terminal or run `source ~/.bashrc`, `source ~/.bash_profile`, or `source ~/.zshrc` to apply the changes.
+
 ## Installing Python versions
 - Use `pyenv install <version>` to install the desired Python version, e.g., `pyenv install 3.9.5`.
 ```bash

@@ -117,6 +117,24 @@ echo '## Theme' >> ~/.zshrc && echo 'autoload -U promptinit; promptinit' >> ~/.z
 
 ## Custom aliases
 
+### Consideration
+
+Before adding custom aliases, I recommend installing colorls to have a better visualization of the files and directories.
+
+#### Install colorls
+1. Install Ruby
+```bash
+sudo apt update\nsudo apt install ruby-full -y
+```
+2. Install colorls
+```bash
+gem install colorls
+```
+3. Verify the installation
+```bash
+colorls --version
+```
+
 ### Control cd command behavior aliases
 - `alias ..='cd ..'`
 - `alias ...='cd ../../'`
