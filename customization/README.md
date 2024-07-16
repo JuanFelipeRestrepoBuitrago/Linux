@@ -91,29 +91,69 @@ echo '' >> ~/.zshrc && echo 'if [ -x /usr/bin/dircolors ]; then' >> ~/.zshrc && 
 ### Zsh Themes
 Zsh comes with a variety of themes that you can use to customize the appearance of your terminal. To change the theme, you can set the `ZSH_THEME` variable in your `.zshrc` file. 
 
-#### Murilasso
+#### Tjkirch
 
-In the `.zshrc` file change the `ZSH_THEME` variable for `murilasso`.
+In the `.zshrc` file change the `ZSH_THEME` variable for `tjkirch`.
 
-#### Pure
+#### Powerlevel10k
 
-For this theme you must have nodejs installed. [GUIDE](https://github.com/JuanFelipeRestrepoBuitrago/Linux/blob/main/programming_languages/nodejs_help.md)
-
-1. Install the Pure theme
+1. Install the Powerlevel10k theme.
 ```bash
-npm install --global pure-prompt
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 ```
-2. Add the following lines to `.zshrc` file
+2. Set the `ZSH_THEME` variable to `powerlevel10k/powerlevel10k` in the `.zshrc` file.
+3. Run the following command to configure the Powerlevel10k theme.
 ```bash
-## Theme
-autoload -U promptinit; promptinit
-prompt pure
+p10k configure
 ```
+4. Reload the terminal to apply the changes.
 ```bash
-# Command to add lines to file:
-echo '## Theme' >> ~/.zshrc && echo 'autoload -U promptinit; promptinit' >> ~/.zshrc && echo 'prompt pure' >> ~/.zshrc
+source ~/.zshrc
 ```
-3. Restart the terminal or run `source ~/.zshrc` to apply the changes.
+
+##### Personal Recommendations
+
+###### Prompt Style
+- Classic
+
+###### Character Set
+- Unicode
+
+###### Prompt Color
+- Dark
+
+###### Show current time?
+- 12-hour format
+
+###### Prompt Separators
+- Vertical
+
+###### Prompt Heads
+- Sharp
+
+###### Prompt Tails
+- Round
+
+###### Prompt Height
+- Two lines
+
+###### Prompt Connection
+- Disconnected
+
+###### Prompt Frame
+- No frame
+
+###### Prompt Spacing
+- Sparse
+
+###### Prompt Flow
+- Concise
+
+###### Prompt Icons
+- Many icons
+
+###### Enable Transient Prompt?
+- No
 
 ## Custom aliases
 
@@ -124,11 +164,11 @@ Before adding custom aliases, I recommend installing colorls to have a better vi
 #### Install colorls
 1. Install Ruby
 ```bash
-sudo apt update\nsudo apt install ruby-full -y
+sudo apt update && sudo apt install ruby-full -y
 ```
 2. Install colorls
 ```bash
-gem install colorls
+sudo gem install colorls
 ```
 3. Verify the installation
 ```bash
