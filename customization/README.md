@@ -202,6 +202,10 @@ colorls --version
 ### Update Debian Linux server Aliases
 - `alias update='sudo apt-get update && sudo apt-get upgrade' # update on one command`
 
+### Executable Aliases
+- `alias mount_drives='~/.drives/mount_drives.sh'`
+- `alias umount_drives='~/.drives/umount_drives.sh'`
+
 ### Vim aliases
 - `alias vi=vim`
 - `alias svi='sudo vi'`
@@ -270,6 +274,10 @@ alias reload='source ~/.bashrc'
 # Update Debian Linux server Aliases
 alias update='sudo apt-get update && sudo apt-get upgrade' # update on one command
 
+# Executable Aliases
+alias mount_drives='~/.drives/mount_drives.sh'
+alias umount_drives='~/.drives/umount_drives.sh'
+
 # Vim aliases
 alias vi=vim
 alias svi='sudo vi'
@@ -322,6 +330,10 @@ alias reload='source ~/.zshrc'
 
 # Update Debian Linux server Aliases
 alias update='sudo apt-get update && sudo apt-get upgrade' # update on one command
+
+# Executable Aliases
+alias mount_drives='~/.drives/mount_drives.sh'
+alias umount_drives='~/.drives/umount_drives.sh'
 
 # Vim aliases
 alias vi=vim
