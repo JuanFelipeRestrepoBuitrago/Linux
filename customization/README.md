@@ -79,12 +79,15 @@ fi
 export EDITOR=vim
 export VISUAL=vim
 
+# Mount Drives
+mount_drives
+
 # Terminal Customization
 
 ```
 ```bash
 # Command to add lines to file:
-echo '' >> ~/.zshrc && echo 'if [ -x /usr/bin/dircolors ]; then' >> ~/.zshrc && echo '    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"' >> ~/.zshrc && echo '    alias ls='ls --color=auto'' >> ~/.zshrc && echo '    #alias dir='dir --color=auto'' >> ~/.zshrc && echo '    #alias vdir='vdir --color=auto'' >> ~/.zshrc && echo '' >> ~/.zshrc && echo '    alias grep='grep --color=auto'' >> ~/.zshrc && echo '    alias fgrep='fgrep --color=auto'' >> ~/.zshrc && echo '    alias egrep='egrep --color=auto'' >> ~/.zshrc && echo 'fi' >> ~/.zshrc && echo '' >> ~/.zshrc && echo '# some more ls aliases' >> ~/.zshrc && echo 'alias ll='ls -alF'' >> ~/.zshrc && echo 'alias la='ls -A'' >> ~/.zshrc && echo 'alias l='ls -CF'' >> ~/.zshrc && echo '' >> ~/.zshrc && echo '# Custom Aliases' >> ~/.zshrc && echo '' >> ~/.zshrc && echo 'if [ -f ~/.zsh_aliases ]; then' >> ~/.zshrc && echo '    . ~/.zsh_aliases' >> ~/.zshrc && echo 'fi' >> ~/.zshrc && echo '' >> ~/.zshrc && echo 'export EDITOR=vim' >> ~/.zshrc && echo 'export VISUAL=vim' >> ~/.zshrc && echo '' >> ~/.zshrc && echo '# Terminal Customization' >> ~/.zshrc && echo '' >> ~/.zshrc
+echo '' >> ~/.zshrc && echo 'if [ -x /usr/bin/dircolors ]; then' >> ~/.zshrc && echo '    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"' >> ~/.zshrc && echo '    alias ls='ls --color=auto'' >> ~/.zshrc && echo '    #alias dir='dir --color=auto'' >> ~/.zshrc && echo '    #alias vdir='vdir --color=auto'' >> ~/.zshrc && echo '' >> ~/.zshrc && echo '    alias grep='grep --color=auto'' >> ~/.zshrc && echo '    alias fgrep='fgrep --color=auto'' >> ~/.zshrc && echo '    alias egrep='egrep --color=auto'' >> ~/.zshrc && echo 'fi' >> ~/.zshrc && echo '' >> ~/.zshrc && echo '# some more ls aliases' >> ~/.zshrc && echo 'alias ll='ls -alF'' >> ~/.zshrc && echo 'alias la='ls -A'' >> ~/.zshrc && echo 'alias l='ls -CF'' >> ~/.zshrc && echo '' >> ~/.zshrc && echo '# Custom Aliases' >> ~/.zshrc && echo 'if [ -f ~/.zsh_aliases ]; then' >> ~/.zshrc && echo '    . ~/.zsh_aliases' >> ~/.zshrc && echo 'fi' >> ~/.zshrc && echo '' >> ~/.zshrc && echo 'export EDITOR=vim' >> ~/.zshrc && echo 'export VISUAL=vim' >> ~/.zshrc && echo '' >> ~/.zshrc && echo '# Mount Drives' >> ~/.zshrc && echo 'mount_drives' >> ~/.zshrc && echo '' >> ~/.zshrc && echo '# Terminal Customization' >> ~/.zshrc && echo '' >> ~/.zshrc
 ```
 
 
@@ -102,11 +105,29 @@ In the `.zshrc` file change the `ZSH_THEME` variable for `tjkirch`.
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 ```
 2. Set the `ZSH_THEME` variable to `powerlevel10k/powerlevel10k` in the `.zshrc` file.
-3. Run the following command to configure the Powerlevel10k theme.
+3. Add the following lines to the `.zshrc` file to enable the Powerlevel10k theme.
+```bash
+# Theme
+
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+```
+```bash
+# Command to add lines to file:
+echo '# Theme' >> ~/.zshrc && echo '' >> ~/.zshrc && echo '# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.' >> ~/.zshrc && echo '# Initialization code that may require console input (password prompts, [y/n]' >> ~/.zshrc && echo '# confirmations, etc.) must go above this block; everything else may go below.' >> ~/.zshrc && echo 'if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then' >> ~/.zshrc && echo '  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"' >> ~/.zshrc && echo 'fi' >> ~/.zshrc && echo '' >> ~/.zshrc && echo '# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.' >> ~/.zshrc && echo '[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh' >> ~/.zshrc
+```
+4. Run the following command to configure the Powerlevel10k theme.
 ```bash
 p10k configure
 ```
-4. Reload the terminal to apply the changes.
+5. Reload the terminal to apply the changes.
 ```bash
 source ~/.zshrc
 ```
@@ -175,6 +196,135 @@ sudo gem install colorls
 colorls --version
 ```
 
+#### Copy .drives folder
+
+1. Create a folder called `.drives` in the home directory.
+```bash
+mkdir ~/.drives
+```
+
+2. Create a file called `mount_drives.sh` in the `.drives` folder.
+```bash
+touch ~/.drives/mount_drives.sh
+```
+
+3. Create a file called `umount_drives.sh` in the `.drives` folder.
+```bash
+touch ~/.drives/umount_drives.sh
+```
+
+4. Add the following content to the `mount_drives.sh` file.
+```bash
+#!/bin/bash
+
+# Function to check if a drive is already mounted
+is_mounted() {
+    local MOUNT_POINT="$1"
+    if mountpoint -q "$MOUNT_POINT"; then
+        return 0  # Mounted
+    else
+        return 1  # Not mounted
+    fi
+}
+
+# Function to mount a drive if it's not already mounted
+mount_drive() {
+    local DRIVE_LETTER="$1"
+    local MOUNT_POINT="$2"
+    local MOUNT_COMMAND="$3"
+
+    if is_mounted "$MOUNT_POINT"; then
+        echo "$DRIVE_LETTER is already mounted at $MOUNT_POINT."
+    else
+        if [ ! -d "$MOUNT_POINT" ]; then
+            sudo mkdir -p "$MOUNT_POINT"
+        fi
+
+        # Execute the provided mount command
+        eval "$MOUNT_COMMAND"
+        echo "$DRIVE_LETTER mounted at $MOUNT_POINT."
+    fi
+}
+
+# Function to unmount a drive if it's disconnected
+unmount_drive() {
+    local MOUNT_POINT="$1"
+
+    if ! is_mounted "$MOUNT_POINT" && [ -d "$MOUNT_POINT" ]; then
+        sudo umount "$MOUNT_POINT"
+        sudo rmdir "$MOUNT_POINT"
+        echo "$MOUNT_POINT is disconnected and removed."
+    fi
+}
+
+# First drive
+DRIVE_LETTER1="D:"
+MOUNT_POINT1="/mnt/d"
+MOUNT_COMMAND1="sudo mount -t drvfs $DRIVE_LETTER1 $MOUNT_POINT1"
+
+# Second drive (replace with the appropriate command)
+DRIVE_LETTER2="Z:"
+MOUNT_POINT2="/mnt/z"
+MOUNT_COMMAND2="sudo mount -t cifs //pipepi.ddns.net/Data $MOUNT_POINT2 -o username=pipepi,password=Santiagoa1a++"
+
+# Mount the drives
+mount_drive "$DRIVE_LETTER1" "$MOUNT_POINT1" "$MOUNT_COMMAND1"
+mount_drive "$DRIVE_LETTER2" "$MOUNT_POINT2" "$MOUNT_COMMAND2"
+
+# Unmount the drives if they are disconnected
+unmount_drive "$MOUNT_POINT1"
+unmount_drive "$MOUNT_POINT2"
+```
+```bash
+# Command to add lines to file:
+echo '#!/bin/bash' >> ~/.drives/mount_drives.sh && echo '' >> ~/.drives/mount_drives.sh && echo '# Function to check if a drive is already mounted' >> ~/.drives/mount_drives.sh && echo 'is_mounted() {' >> ~/.drives/mount_drives.sh && echo '    local MOUNT_POINT="$1"' >> ~/.drives/mount_drives.sh && echo '    if mountpoint -q "$MOUNT_POINT"; then' >> ~/.drives/mount_drives.sh && echo '        return 0  # Mounted' >> ~/.drives/mount_drives.sh && echo '    else' >> ~/.drives/mount_drives.sh && echo '        return 1  # Not mounted' >> ~/.drives/mount_drives.sh && echo '    fi' >> ~/.drives/mount_drives.sh && echo '}' >> ~/.drives/mount_drives.sh && echo '' >> ~/.drives/mount_drives.sh && echo '# Function to mount a drive if it'\''s not already mounted' >> ~/.drives/mount_drives.sh && echo 'mount_drive() {' >> ~/.drives/mount_drives.sh && echo '    local DRIVE_LETTER="$1"' >> ~/.drives/mount_drives.sh && echo '    local MOUNT_POINT="$2"' >> ~/.drives/mount_drives.sh && echo '    local MOUNT_COMMAND="$3"' >> ~/.drives/mount_drives.sh && echo '' >> ~/.drives/mount_drives.sh && echo '    if is_mounted "$MOUNT_POINT"; then' >> ~/.drives/mount_drives.sh && echo '        echo "$DRIVE_LETTER is already mounted at $MOUNT_POINT."' >> ~/.drives/mount_drives.sh && echo '    else' >> ~/.drives/mount_drives.sh && echo '        if [ ! -d "$MOUNT_POINT" ]; then' >> ~/.drives/mount_drives.sh && echo '            sudo mkdir -p "$MOUNT_POINT"' >> ~/.drives/mount_drives.sh && echo '        fi' >> ~/.drives/mount_drives.sh && echo '' >> ~/.drives/mount_drives.sh && echo '        # Execute the provided mount command' >> ~/.drives/mount_drives.sh && echo '        eval "$MOUNT_COMMAND"' >> ~/.drives/mount_drives.sh && echo '        echo "$DRIVE_LETTER mounted at $MOUNT_POINT."' >> ~/.drives/mount_drives.sh && echo '    fi' >> ~/.drives/mount_drives.sh && echo '}' >> ~/.drives/mount_drives.sh && echo '' >> ~/.drives/mount_drives.sh && echo '# Function to unmount a drive if it'\''s disconnected' >> ~/.drives/mount_drives.sh && echo 'unmount_drive() {' >> ~/.drives/mount_drives.sh && echo '    local MOUNT_POINT="$1"' >> ~/.drives/mount_drives.sh && echo '' >> ~/.drives/mount_drives.sh && echo '    if ! is_mounted "$MOUNT_POINT" && [ -d "$MOUNT_POINT" ]; then' >> ~/.drives/mount_drives.sh && echo '        sudo umount "$MOUNT_POINT"' >> ~/.drives/mount_drives.sh && echo '        sudo rmdir "$MOUNT_POINT"' >> ~/.drives/mount_drives.sh && echo '        echo "$MOUNT_POINT is disconnected and removed."' >> ~/.drives/mount_drives.sh && echo '    fi' >> ~/.drives/mount_drives.sh && echo '}' >> ~/.drives/mount_drives.sh && echo '' >> ~/.drives/mount_drives.sh && echo '# First drive' >> ~/.drives/mount_drives.sh && echo 'DRIVE_LETTER1="D:"' >> ~/.drives/mount_drives.sh && echo 'MOUNT_POINT1="/mnt/d"' >> ~/.drives/mount_drives.sh && echo 'MOUNT_COMMAND1="sudo mount -t drvfs $DRIVE_LETTER1 $MOUNT_POINT1"' >> ~/.drives/mount_drives.sh && echo '' >> ~/.drives/mount_drives.sh && echo '# Second drive (replace with the appropriate command)' >> ~/.drives/mount_drives.sh && echo 'DRIVE_LETTER2="Z:"' >> ~/.drives/mount_drives.sh && echo 'MOUNT_POINT2="/mnt/z"' >> ~/.drives/mount_drives.sh && echo 'MOUNT_COMMAND2="sudo mount -t cifs //pipepi.ddns.net/Data $MOUNT_POINT2 -o username=pipepi,password=Santiagoa1a++"' >> ~/.drives/mount_drives.sh && echo '' >> ~/.drives/mount_drives.sh && echo '# Mount the drives' >> ~/.drives/mount_drives.sh && echo 'mount_drive "$DRIVE_LETTER1" "$MOUNT_POINT1" "$MOUNT_COMMAND1"' >> ~/.drives/mount_drives.sh && echo 'mount_drive "$DRIVE_LETTER2" "$MOUNT_POINT2" "$MOUNT_COMMAND2"' >> ~/.drives/mount_drives.sh && echo '' >> ~/.drives/mount_drives.sh && echo '# Unmount the drives if they are disconnected' >> ~/.drives/mount_drives.sh && echo 'unmount_drive "$MOUNT_POINT1"' >> ~/.drives/mount_drives.sh && echo 'unmount_drive "$MOUNT_POINT2"' >> ~/.drives/mount_drives.sh
+```
+
+5. Add the following content to the `umount_drives.sh` file.
+```bash
+#!/bin/bash
+
+# Function to check if a drive is already mounted
+is_mounted() {
+    local MOUNT_POINT="$1"
+    if mountpoint -q "$MOUNT_POINT"; then
+        return 0  # Mounted
+    else
+        return 1  # Not mounted
+    fi
+}
+
+umount_drive() {
+    local MOUNT_POINT="$1"
+
+    if is_mounted "$MOUNT_POINT"; then
+        sudo umount "$MOUNT_POINT"
+        echo "$MOUNT_POINT was disconnected."
+    else 
+        echo "$MOUNT_POINT was not mounted."
+    fi
+}
+
+# First drive
+MOUNT_POINT1="/mnt/d"
+
+# Second drive
+MOUNT_POINT2="/mnt/z"
+
+# Unmount the drives if they are connected
+umount_drive "$MOUNT_POINT1"
+umount_drive "$MOUNT_POINT2"
+```
+```bash
+# Command to add lines to file:
+echo '#!/bin/bash' >> ~/.drives/umount_drives.sh && echo '' >> ~/.drives/umount_drives.sh && echo '# Function to check if a drive is already mounted' >> ~/.drives/umount_drives.sh && echo 'is_mounted() {' >> ~/.drives/umount_drives.sh && echo '    local MOUNT_POINT="$1"' >> ~/.drives/umount_drives.sh && echo '    if mountpoint -q "$MOUNT_POINT"; then' >> ~/.drives/umount_drives.sh && echo '        return 0  # Mounted' >> ~/.drives/umount_drives.sh && echo '    else' >> ~/.drives/umount_drives.sh && echo '        return 1  # Not mounted' >> ~/.drives/umount_drives.sh && echo '    fi' >> ~/.drives/umount_drives.sh && echo '}' >> ~/.drives/umount_drives.sh && echo '' >> ~/.drives/umount_drives.sh && echo 'umount_drive() {' >> ~/.drives/umount_drives.sh && echo '    local MOUNT_POINT="$1"' >> ~/.drives/umount_drives.sh && echo '' >> ~/.drives/umount_drives.sh && echo '    if is_mounted "$MOUNT_POINT"; then' >> ~/.drives/umount_drives.sh && echo '        sudo umount "$MOUNT_POINT"' >> ~/.drives/umount_drives.sh && echo '        echo "$MOUNT_POINT was disconnected."' >> ~/.drives/umount_drives.sh && echo '    else ' >> ~/.drives/umount_drives.sh && echo '        echo "$MOUNT_POINT was not mounted."' >> ~/.drives/umount_drives.sh && echo '    fi' >> ~/.drives/umount_drives.sh && echo '}' >> ~/.drives/umount_drives.sh && echo '' >> ~/.drives/umount_drives.sh && echo '# First drive' >> ~/.drives/umount_drives.sh && echo 'MOUNT_POINT1="/mnt/d"' >> ~/.drives/umount_drives.sh && echo '' >> ~/.drives/umount_drives.sh && echo '# Second drive' >> ~/.drives/umount_drives.sh && echo 'MOUNT_POINT2="/mnt/z"' >> ~/.drives/umount_drives.sh && echo '' >> ~/.drives/umount_drives.sh && echo '# Unmount the drives if they are connected' >> ~/.drives/umount_drives.sh && echo 'umount_drive "$MOUNT_POINT1"' >> ~/.drives/umount_drives.sh && echo 'umount_drive "$MOUNT_POINT2"' >> ~/.drives/umount_drives.sh
+```
+
+6. Make the files executable.
+```bash
+chmod +x ~/.drives/mount_drives.sh && chmod +x ~/.drives/umount_drives.sh
+```
+
 ### Control cd command behavior aliases
 - `alias ..='cd ..'`
 - `alias ...='cd ../../'`
@@ -198,6 +348,7 @@ colorls --version
 - `alias path='echo $PATH'`
 - `alias reload='source ~/.bashrc'`
 - `alias reload='source ~/.zshrc'` # for zsh
+- `alias shutdownWSL='sudo shutdown -h now'`
 
 ### Update Debian Linux server Aliases
 - `alias update='sudo apt-get update && sudo apt-get upgrade' # update on one command`
@@ -270,6 +421,7 @@ alias lsa='colorls -al'
 # System Aliases
 alias path='echo $PATH'
 alias reload='source ~/.bashrc'
+alias shutdownWSL='sudo shutdown -h now'
 
 # Update Debian Linux server Aliases
 alias update='sudo apt-get update && sudo apt-get upgrade' # update on one command
@@ -327,6 +479,7 @@ alias lsa='colorls -al'
 # System Aliases
 alias path='echo $PATH'
 alias reload='source ~/.zshrc'
+alias shutdownWSL='sudo shutdown -h now'
 
 # Update Debian Linux server Aliases
 alias update='sudo apt-get update && sudo apt-get upgrade' # update on one command
