@@ -48,7 +48,7 @@ MOUNT_COMMAND1="sudo mount -t drvfs $DRIVE_LETTER1 $MOUNT_POINT1"
 # Second drive (replace with the appropriate command)
 DRIVE_LETTER2="Z:"
 MOUNT_POINT2="/mnt/z"
-MOUNT_COMMAND2="sudo mount -t cifs //pipepi.ddns.net/Data $MOUNT_POINT2 -o username=pipepi,password=Santiagoa1a++"
+MOUNT_COMMAND2="sudo mount -t cifs //pipepi.ddns.net/Data $MOUNT_POINT2 -o username=pipepi,password=Santiagoa1a++,uid=1000,gid=1000"
 
 # Mount the drives
 mount_drive "$DRIVE_LETTER1" "$MOUNT_POINT1" "$MOUNT_COMMAND1"
