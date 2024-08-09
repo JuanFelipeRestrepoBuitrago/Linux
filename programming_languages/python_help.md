@@ -78,14 +78,53 @@ pyenv virtualenv <version> <env_name>
 ```
 
 ## Activating and deactivating virtual environments
-- Activate a virtual environment with `pyenv activate <env_name>` and deactivate with `pyenv deactivate`.
+- Activate a virtual environment with `pyenv activate <env_name>` and deactivate with `pyenv deactivate` or `source deactivate`.
 ```bash
 pyenv activate <env_name>
 ```
 ```bash
 pyenv deactivate
 ```
+```bash
+source deactivate
+```
 
+## Listing virtual environments
+- List all virtual environments with `pyenv virtualenvs`.
+```bash
+pyenv virtualenvs
+```
+
+## Using a virtual environment
+- Use a virtual environment in the current shell session with `pyenv shell <env_name>`, e.g., `pyenv shell myenv`.
+```bash
+pyenv shell <env_name>
+```
+
+## Deleting virtual environments
+- Delete a virtual environment with `pyenv virtualenv-delete <env_name>`.
+```bash
+pyenv virtualenv-delete <env_name>
+```
+
+## Cloning virtual environments
+- Clone a virtual environment with `pyenv virtualenv <existing_env> <new_env>`, e.g., `pyenv virtualenv myenv myenv_clone`.
+```bash
+pyenv virtualenv <existing_env> <new_env>
+```
+
+## Renaming virtual environments
+- Rename a virtual environment by cloning it with a new name and deleting the original.
+```bash
+pyenv virtualenv <existing_env> <new_env>
+pyenv virtualenv-delete <existing_env>
+```
+
+## Setting the local virtual environment
+- Set the local virtual environment with `pyenv local <env_name>` in your project directory.
+```bash
+pyenv local <env_name>
+```
 
 ## Removing virtual environments
 - Remove a virtual environment with `pyenv uninstall <env_name>`.

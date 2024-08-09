@@ -43,12 +43,12 @@ unmount_drive() {
 # First drive
 DRIVE_LETTER1="D:"
 MOUNT_POINT1="/mnt/d"
-MOUNT_COMMAND1="sudo mount -t drvfs $DRIVE_LETTER1 $MOUNT_POINT1"
+MOUNT_COMMAND1="sudo mount -t drvfs $DRIVE_LETTER1 $MOUNT_POINT1 -o uid=1000,gid=1000,umask=22,fmask=11"
 
 # Second drive (replace with the appropriate command)
 DRIVE_LETTER2="Z:"
 MOUNT_POINT2="/mnt/z"
-MOUNT_COMMAND2="sudo mount -t cifs //pipepi.ddns.net/Data $MOUNT_POINT2 -o username=pipepi,password=Santiagoa1a++,uid=1000,gid=1000"
+MOUNT_COMMAND2="sudo mount -t cifs //pipepi.ddns.net/Data $MOUNT_POINT2 -o username=pipepi,password=Santiagoa1a++,uid=1000,gid=1000,mfsymlinks"
 
 # Mount the drives
 mount_drive "$DRIVE_LETTER1" "$MOUNT_POINT1" "$MOUNT_COMMAND1"
