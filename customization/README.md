@@ -535,8 +535,8 @@ alias edge='/mnt/c/Program\ Files\ \(x86\)/Microsoft/Edge/Application/msedge.exe
 
 ### List of plugins
 - [zsh-autosuggestions](#zsh-autosuggestions)
-- [zsh-syntax-highlighting](#zsh-syntax-highlighting)Fzf
-- [Fzf](#fzf)
+- [zsh-syntax-highlighting](#zsh-syntax-highlighting)
+- [Z](#z)
 - [Github Copilot](#github-copilot)
 
 ### zsh-autosuggestions
@@ -564,24 +564,18 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/p
 plugins=(... zsh-syntax-highlighting)
 ```
 
-### Fzf
+### Z
 
-1. Install Fzf.
-```bash
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
-```
-2. Add the plugin in the `.zshrc` file. Add the following line to the `.zshrc` file.
-```bash
-## Enable fuzzy completion
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+Plugin to jump to frequently used directories.
 
-## Use fuzzy completion for Zsh history
-bindkey '^[[A' history-beginning-search-backward
-bindkey '^[[B' history-beginning-search-forward
-```
+1. Clone the repository. In most cases, the plugin is already installed.
 ```bash
-# Command to add lines to file:
-echo '## Enable fuzzy completion' >> ~/.zshrc && echo '[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh' >> ~/.zshrc && echo '' >> ~/.zshrc && echo '## Use fuzzy completion for Zsh history' >> ~/.zshrc && echo "bindkey '^[[A' history-beginning-search-backward" >> ~/.zshrc && echo "bindkey '^[[B' history-beginning-search-forward" >> ~/.zshrc
+git clone https://github.com/agkozak/zsh-z ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-z
+```
+
+2. Add the plugin in the `.zshrc` file.
+```bash
+plugins=(... z)
 ```
 
 ### Github Copilot
