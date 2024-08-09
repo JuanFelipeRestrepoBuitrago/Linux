@@ -236,13 +236,24 @@ mount_drive() {
     if is_mounted "$MOUNT_POINT"; then
         echo "$DRIVE_LETTER is already mounted at $MOUNT_POINT."
     else
-        if [ ! -d "$MOUNT_POINT" ]; then
-            sudo mkdir -p "$MOUNT_POINT"
-        fi
+        read -p "Do you want to mount $DRIVE_LETTER at $MOUNT_POINT? (y/n): " choice
+        case "$choice" in
+            y|Y )
+                if [ ! -d "$MOUNT_POINT" ]; then
+                    sudo mkdir -p "$MOUNT_POINT"
+                fi
 
-        # Execute the provided mount command
-        eval "$MOUNT_COMMAND"
-        echo "$DRIVE_LETTER mounted at $MOUNT_POINT."
+                # Execute the provided mount command
+                eval "$MOUNT_COMMAND"
+                echo "$DRIVE_LETTER mounted at $MOUNT_POINT."
+                ;;
+            n|N )
+                echo "Skipping mounting of $DRIVE_LETTER."
+                ;;
+            * )
+                echo "Invalid choice. Skipping mounting of $DRIVE_LETTER."
+                ;;
+        esac
     fi
 }
 
@@ -260,12 +271,12 @@ unmount_drive() {
 # First drive
 DRIVE_LETTER1="D:"
 MOUNT_POINT1="/mnt/d"
-MOUNT_COMMAND1="sudo mount -t drvfs $DRIVE_LETTER1 $MOUNT_POINT1"
+MOUNT_COMMAND1="sudo mount -t drvfs $DRIVE_LETTER1 $MOUNT_POINT1 -o uid=1000,gid=1000,umask=22,fmask=11"
 
 # Second drive (replace with the appropriate command)
 DRIVE_LETTER2="Z:"
 MOUNT_POINT2="/mnt/z"
-MOUNT_COMMAND2="sudo mount -t cifs //pipepi.ddns.net/Data $MOUNT_POINT2 -o username=pipepi,password=Santiagoa1a++"
+MOUNT_COMMAND2="sudo mount -t cifs //pipepi.ddns.net/Data $MOUNT_POINT2 -o username=pipepi,password=Santiagoa1a++,uid=1000,gid=1000,mfsymlinks"
 
 # Mount the drives
 mount_drive "$DRIVE_LETTER1" "$MOUNT_POINT1" "$MOUNT_COMMAND1"
@@ -277,7 +288,7 @@ unmount_drive "$MOUNT_POINT2"
 ```
 ```bash
 # Command to add lines to file:
-echo '#!/bin/bash' >> ~/.drives/mount_drives.sh && echo '' >> ~/.drives/mount_drives.sh && echo '# Function to check if a drive is already mounted' >> ~/.drives/mount_drives.sh && echo 'is_mounted() {' >> ~/.drives/mount_drives.sh && echo '    local MOUNT_POINT="$1"' >> ~/.drives/mount_drives.sh && echo '    if mountpoint -q "$MOUNT_POINT"; then' >> ~/.drives/mount_drives.sh && echo '        return 0  # Mounted' >> ~/.drives/mount_drives.sh && echo '    else' >> ~/.drives/mount_drives.sh && echo '        return 1  # Not mounted' >> ~/.drives/mount_drives.sh && echo '    fi' >> ~/.drives/mount_drives.sh && echo '}' >> ~/.drives/mount_drives.sh && echo '' >> ~/.drives/mount_drives.sh && echo '# Function to mount a drive if it'\''s not already mounted' >> ~/.drives/mount_drives.sh && echo 'mount_drive() {' >> ~/.drives/mount_drives.sh && echo '    local DRIVE_LETTER="$1"' >> ~/.drives/mount_drives.sh && echo '    local MOUNT_POINT="$2"' >> ~/.drives/mount_drives.sh && echo '    local MOUNT_COMMAND="$3"' >> ~/.drives/mount_drives.sh && echo '' >> ~/.drives/mount_drives.sh && echo '    if is_mounted "$MOUNT_POINT"; then' >> ~/.drives/mount_drives.sh && echo '        echo "$DRIVE_LETTER is already mounted at $MOUNT_POINT."' >> ~/.drives/mount_drives.sh && echo '    else' >> ~/.drives/mount_drives.sh && echo '        if [ ! -d "$MOUNT_POINT" ]; then' >> ~/.drives/mount_drives.sh && echo '            sudo mkdir -p "$MOUNT_POINT"' >> ~/.drives/mount_drives.sh && echo '        fi' >> ~/.drives/mount_drives.sh && echo '' >> ~/.drives/mount_drives.sh && echo '        # Execute the provided mount command' >> ~/.drives/mount_drives.sh && echo '        eval "$MOUNT_COMMAND"' >> ~/.drives/mount_drives.sh && echo '        echo "$DRIVE_LETTER mounted at $MOUNT_POINT."' >> ~/.drives/mount_drives.sh && echo '    fi' >> ~/.drives/mount_drives.sh && echo '}' >> ~/.drives/mount_drives.sh && echo '' >> ~/.drives/mount_drives.sh && echo '# Function to unmount a drive if it'\''s disconnected' >> ~/.drives/mount_drives.sh && echo 'unmount_drive() {' >> ~/.drives/mount_drives.sh && echo '    local MOUNT_POINT="$1"' >> ~/.drives/mount_drives.sh && echo '' >> ~/.drives/mount_drives.sh && echo '    if ! is_mounted "$MOUNT_POINT" && [ -d "$MOUNT_POINT" ]; then' >> ~/.drives/mount_drives.sh && echo '        sudo umount "$MOUNT_POINT"' >> ~/.drives/mount_drives.sh && echo '        sudo rmdir "$MOUNT_POINT"' >> ~/.drives/mount_drives.sh && echo '        echo "$MOUNT_POINT is disconnected and removed."' >> ~/.drives/mount_drives.sh && echo '    fi' >> ~/.drives/mount_drives.sh && echo '}' >> ~/.drives/mount_drives.sh && echo '' >> ~/.drives/mount_drives.sh && echo '# First drive' >> ~/.drives/mount_drives.sh && echo 'DRIVE_LETTER1="D:"' >> ~/.drives/mount_drives.sh && echo 'MOUNT_POINT1="/mnt/d"' >> ~/.drives/mount_drives.sh && echo 'MOUNT_COMMAND1="sudo mount -t drvfs $DRIVE_LETTER1 $MOUNT_POINT1"' >> ~/.drives/mount_drives.sh && echo '' >> ~/.drives/mount_drives.sh && echo '# Second drive (replace with the appropriate command)' >> ~/.drives/mount_drives.sh && echo 'DRIVE_LETTER2="Z:"' >> ~/.drives/mount_drives.sh && echo 'MOUNT_POINT2="/mnt/z"' >> ~/.drives/mount_drives.sh && echo 'MOUNT_COMMAND2="sudo mount -t cifs //pipepi.ddns.net/Data $MOUNT_POINT2 -o username=pipepi,password=Santiagoa1a++"' >> ~/.drives/mount_drives.sh && echo '' >> ~/.drives/mount_drives.sh && echo '# Mount the drives' >> ~/.drives/mount_drives.sh && echo 'mount_drive "$DRIVE_LETTER1" "$MOUNT_POINT1" "$MOUNT_COMMAND1"' >> ~/.drives/mount_drives.sh && echo 'mount_drive "$DRIVE_LETTER2" "$MOUNT_POINT2" "$MOUNT_COMMAND2"' >> ~/.drives/mount_drives.sh && echo '' >> ~/.drives/mount_drives.sh && echo '# Unmount the drives if they are disconnected' >> ~/.drives/mount_drives.sh && echo 'unmount_drive "$MOUNT_POINT1"' >> ~/.drives/mount_drives.sh && echo 'unmount_drive "$MOUNT_POINT2"' >> ~/.drives/mount_drives.sh
+echo '#!/bin/bash' >> ~/.drives/mount_drives.sh && echo '' >> ~/.drives/mount_drives.sh && echo '# Function to check if a drive is already mounted' >> ~/.drives/mount_drives.sh && echo 'is_mounted() {' >> ~/.drives/mount_drives.sh && echo '    local MOUNT_POINT="$1"' >> ~/.drives/mount_drives.sh && echo '    if mountpoint -q "$MOUNT_POINT"; then' >> ~/.drives/mount_drives.sh && echo '        return 0  # Mounted' >> ~/.drives/mount_drives.sh && echo '    else' >> ~/.drives/mount_drives.sh && echo '        return 1  # Not mounted' >> ~/.drives/mount_drives.sh && echo '    fi' >> ~/.drives/mount_drives.sh && echo '}' >> ~/.drives/mount_drives.sh && echo '' >> ~/.drives/mount_drives.sh && echo '# Function to mount a drive if it'\''s not already mounted' >> ~/.drives/mount_drives.sh && echo 'mount_drive() {' >> ~/.drives/mount_drives.sh && echo '    local DRIVE_LETTER="$1"' >> ~/.drives/mount_drives.sh && echo '    local MOUNT_POINT="$2"' >> ~/.drives/mount_drives.sh && echo '    local MOUNT_COMMAND="$3"' >> ~/.drives/mount_drives.sh && echo '' >> ~/.drives/mount_drives.sh && echo '    if is_mounted "$MOUNT_POINT"; then' >> ~/.drives/mount_drives.sh && echo '        echo "$DRIVE_LETTER is already mounted at $MOUNT_POINT."' >> ~/.drives/mount_drives.sh && echo '    else' >> ~/.drives/mount_drives.sh && echo '        read -p "Do you want to mount $DRIVE_LETTER at $MOUNT_POINT? (y/n): " choice' >> ~/.drives/mount_drives.sh && echo '        case "$choice" in' >> ~/.drives/mount_drives.sh && echo '            y|Y )' >> ~/.drives/mount_drives.sh && echo '                if [ ! -d "$MOUNT_POINT" ]; then' >> ~/.drives/mount_drives.sh && echo '                    sudo mkdir -p "$MOUNT_POINT"' >> ~/.drives/mount_drives.sh && echo '                fi' >> ~/.drives/mount_drives.sh && echo '' >> ~/.drives/mount_drives.sh && echo '                # Execute the provided mount command' >> ~/.drives/mount_drives.sh && echo '                eval "$MOUNT_COMMAND"' >> ~/.drives/mount_drives.sh && echo '                echo "$DRIVE_LETTER mounted at $MOUNT_POINT."' >> ~/.drives/mount_drives.sh && echo '                ;;' >> ~/.drives/mount_drives.sh && echo '            n|N )' >> ~/.drives/mount_drives.sh && echo '                echo "Skipping mounting of $DRIVE_LETTER."' >> ~/.drives/mount_drives.sh && echo '                ;;' >> ~/.drives/mount_drives.sh && echo '            * )' >> ~/.drives/mount_drives.sh && echo '                echo "Invalid choice. Skipping mounting of $DRIVE_LETTER."' >> ~/.drives/mount_drives.sh && echo '                ;;' >> ~/.drives/mount_drives.sh && echo '        esac' >> ~/.drives/mount_drives.sh && echo '    fi' >> ~/.drives/mount_drives.sh && echo '}' >> ~/.drives/mount_drives.sh && echo '' >> ~/.drives/mount_drives.sh && echo '# Function to unmount a drive if it'\''s disconnected' >> ~/.drives/mount_drives.sh && echo 'unmount_drive() {' >> ~/.drives/mount_drives.sh && echo '    local MOUNT_POINT="$1"' >> ~/.drives/mount_drives.sh && echo '' >> ~/.drives/mount_drives.sh && echo '    if ! is_mounted "$MOUNT_POINT" && [ -d "$MOUNT_POINT" ]; then' >> ~/.drives/mount_drives.sh && echo '        sudo umount "$MOUNT_POINT"' >> ~/.drives/mount_drives.sh && echo '        sudo rmdir "$MOUNT_POINT"' >> ~/.drives/mount_drives.sh && echo '        echo "$MOUNT_POINT is disconnected and removed."' >> ~/.drives/mount_drives.sh && echo '    fi' >> ~/.drives/mount_drives.sh && echo '}' >> ~/.drives/mount_drives.sh && echo '' >> ~/.drives/mount_drives.sh && echo '# First drive' >> ~/.drives/mount_drives.sh && echo 'DRIVE_LETTER1="D:"' >> ~/.drives/mount_drives.sh && echo 'MOUNT_POINT1="/mnt/d"' >> ~/.drives/mount_drives.sh && echo 'MOUNT_COMMAND1="sudo mount -t drvfs $DRIVE_LETTER1 $MOUNT_POINT1 -o uid=1000,gid=1000,umask=22,fmask=11"' >> ~/.drives/mount_drives.sh && echo '' >> ~/.drives/mount_drives.sh && echo '# Second drive (replace with the appropriate command)' >> ~/.drives/mount_drives.sh && echo 'DRIVE_LETTER2="Z:"' >> ~/.drives/mount_drives.sh && echo 'MOUNT_POINT2="/mnt/z"' >> ~/.drives/mount_drives.sh && echo 'MOUNT_COMMAND2="sudo mount -t cifs //pipepi.ddns.net/Data $MOUNT_POINT2 -o username=pipepi,password=Santiagoa1a++,uid=1000,gid=1000,mfsymlinks"' >> ~/.drives/mount_drives.sh && echo '' >> ~/.drives/mount_drives.sh && echo '# Mount the drives' >> ~/.drives/mount_drives.sh && echo 'mount_drive "$DRIVE_LETTER1" "$MOUNT_POINT1" "$MOUNT_COMMAND1"' >> ~/.drives/mount_drives.sh && echo 'mount_drive "$DRIVE_LETTER2" "$MOUNT_POINT2" "$MOUNT_COMMAND2"' >> ~/.drives/mount_drives.sh && echo '' >> ~/.drives/mount_drives.sh && echo '# Unmount the drives if they are disconnected' >> ~/.drives/mount_drives.sh && echo 'unmount_drive "$MOUNT_POINT1"' >> ~/.drives/mount_drives.sh && echo 'unmount_drive "$MOUNT_POINT2"' >> ~/.drives/mount_drives.sh
 ```
 
 5. Add the following content to the `umount_drives.sh` file.
@@ -372,6 +383,9 @@ chmod +x ~/.drives/mount_drives.sh && chmod +x ~/.drives/umount_drives.sh
 - `alias gpl='git pull'`
 - `alias gph='git push'`
 
+### Github Copilot
+- `alias copilot='gh copilot'`
+
 ### Browser
 - `alias edge='/mnt/c/Program\ Files\ \(x86\)/Microsoft/Edge/Application/msedge.exe'`
 
@@ -445,6 +459,9 @@ alias gb='git branch'
 alias gpl='git pull'
 alias gph='git push'
 
+# Github Copilot
+alias copilot='gh copilot'
+
 # Python Aliases
 alias py=python
 alias py3=python3
@@ -503,6 +520,9 @@ alias gb='git branch'
 alias gpl='git pull'
 alias gph='git push'
 
+# Github Copilot
+alias copilot='gh copilot'
+
 # Python Aliases
 alias py=python
 alias py3=python3
@@ -515,7 +535,9 @@ alias edge='/mnt/c/Program\ Files\ \(x86\)/Microsoft/Edge/Application/msedge.exe
 
 ### List of plugins
 - [zsh-autosuggestions](#zsh-autosuggestions)
-- [zsh-syntax-highlighting](#zsh-syntax-highlighting)
+- [zsh-syntax-highlighting](#zsh-syntax-highlighting)Fzf
+- [Fzf](#fzf)
+- [Github Copilot](#github-copilot)
 
 ### zsh-autosuggestions
 
@@ -562,4 +584,28 @@ bindkey '^[[B' history-beginning-search-forward
 echo '## Enable fuzzy completion' >> ~/.zshrc && echo '[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh' >> ~/.zshrc && echo '' >> ~/.zshrc && echo '## Use fuzzy completion for Zsh history' >> ~/.zshrc && echo "bindkey '^[[A' history-beginning-search-backward" >> ~/.zshrc && echo "bindkey '^[[B' history-beginning-search-forward" >> ~/.zshrc
 ```
 
+### Github Copilot
 
+1. Install the Github Copilot extension with the following command:
+```bash
+(type -p wget >/dev/null || (sudo apt update && sudo apt-get install wget -y)) \
+&& sudo mkdir -p -m 755 /etc/apt/keyrings \
+&& wget -qO- https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo tee /etc/apt/keyrings/githubcli-archive-keyring.gpg > /dev/null \
+&& sudo chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg \
+&& echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
+&& sudo apt update \
+&& sudo apt install gh -y
+```
+
+2. Authenticate with your Github account.
+```bash
+gh auth login
+```
+- Select the option to authenticate with a web browser.
+- Enter the web browser and copy the code. The webpage is `https://github.com/login/device`.
+- Follow the instructions to authenticate with your Github account.
+
+3. Install the Github Copilot extension.
+```bash
+gh extension install github/gh-copilot
+```
