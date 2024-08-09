@@ -19,13 +19,24 @@ mount_drive() {
     if is_mounted "$MOUNT_POINT"; then
         echo "$DRIVE_LETTER is already mounted at $MOUNT_POINT."
     else
-        if [ ! -d "$MOUNT_POINT" ]; then
-            sudo mkdir -p "$MOUNT_POINT"
-        fi
+        read -p "Do you want to mount $DRIVE_LETTER at $MOUNT_POINT? (y/n): " choice
+        case "$choice" in
+            y|Y )
+                if [ ! -d "$MOUNT_POINT" ]; then
+                    sudo mkdir -p "$MOUNT_POINT"
+                fi
 
-        # Execute the provided mount command
-        eval "$MOUNT_COMMAND"
-        echo "$DRIVE_LETTER mounted at $MOUNT_POINT."
+                # Execute the provided mount command
+                eval "$MOUNT_COMMAND"
+                echo "$DRIVE_LETTER mounted at $MOUNT_POINT."
+                ;;
+            n|N )
+                echo "Skipping mounting of $DRIVE_LETTER."
+                ;;
+            * )
+                echo "Invalid choice. Skipping mounting of $DRIVE_LETTER."
+                ;;
+        esac
     fi
 }
 
