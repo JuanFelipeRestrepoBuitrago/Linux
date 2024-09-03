@@ -54,7 +54,7 @@ unmount_drive() {
 # First drive
 DRIVE_LETTER1="D:"
 MOUNT_POINT1="/mnt/d"
-MOUNT_COMMAND1="sudo mount -t drvfs $DRIVE_LETTER1 $MOUNT_POINT1 -o uid=1000,gid=1000,umask=22,fmask=11"
+MOUNT_COMMAND1="sudo mount -t drvfs $DRIVE_LETTER1 $MOUNT_POINT1 -o uid=1000,gid=1000,umask=077,fmask=11"
 
 # Second drive (replace with the appropriate command)
 DRIVE_LETTER2="Z:"
