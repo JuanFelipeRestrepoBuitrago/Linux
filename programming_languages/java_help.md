@@ -64,7 +64,7 @@ sdk list java | grep installed
 ## Setting Java version for a project
 - Create a `.sdkmanrc` file in your project directory with the desired Java version number, e.g., `11.0.12-zulu`.
 ```bash
-echo "<version>" > .sdkmanrc
+echo "java=<version>" > .sdkmanrc
 ```
 - Use `sdk use java` in your project directory to automatically switch to the specified Java version.
 ```bash
