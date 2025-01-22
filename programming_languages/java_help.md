@@ -68,7 +68,7 @@ echo "<version>" > .sdkmanrc
 ```
 - Use `sdk use java` in your project directory to automatically switch to the specified Java version.
 ```bash
-sdk use java
+sdk env
 ```
 
 ## Using SDKMAN! with Maven and Gradle
