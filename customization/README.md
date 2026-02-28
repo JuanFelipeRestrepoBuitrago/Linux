@@ -25,6 +25,10 @@
 
 The terminal is a powerful tool that allows you to interact with your computer using text commands. By customizing the terminal, you can make it more efficient and enjoyable to use. In this guide, we will cover some common ways to customize the terminal, including changing the prompt, adding aliases, and installing plugins.
 
+```bash
+sudo apt update && sudo apt full-upgrade -y && sudo reboot
+```
+
 ## Zsh
 
 Zsh is a powerful shell that provides many features and customization options. To install Zsh on your system, you can use the package manager that comes with your distribution. For example, on Debian-based systems, you can install Zsh using the following command:
@@ -78,9 +82,6 @@ fi
 
 export EDITOR=vim
 export VISUAL=vim
-
-# Mount Drives
-mount_drives
 
 # Terminal Customization
 
