@@ -56,6 +56,10 @@ sudo apt-get update && sudo apt-get install -y docker-ce docker-ce-cli container
 sudo groupadd docker && sudo usermod -aG docker $USER && logout && sudo systemctl restart docker
 ```
 
+```bash
+sudo usermod -aG docker $USER && logout && sudo systemctl restart docker
+```
+
 ## Docker Commands
 
 ### Docker Images
