@@ -2,11 +2,11 @@
 inclusion: always
 ---
 
-# Estándar de seguridad
+# Security standard
 
-- **Nunca** hardcodear secretos (tokens, contraseñas, API keys) en el código o config versionada.
-- Los secretos se leen de variables de entorno o gestores de secretos.
-- Nunca commitear archivos con credenciales (`.env`, keys); asegúralos en `.gitignore`.
-- Valida y sanea toda entrada externa; usa consultas parametrizadas.
-- No expongas datos sensibles en logs ni respuestas de error (ver estándar de logging).
-- Fija versiones de dependencias y prefiere paquetes mantenidos y conocidos.
+- **Never** hardcode secrets (tokens, passwords, API keys) in code or versioned config.
+- Secrets are read from environment variables or secret managers.
+- Never commit files with credentials (`.env`, keys); add them to `.gitignore`.
+- Validate and sanitize all external input; use parameterized queries.
+- Do not expose sensitive data in logs or error responses (see the logging standard).
+- Pin dependency versions and prefer well-known, actively maintained packages.

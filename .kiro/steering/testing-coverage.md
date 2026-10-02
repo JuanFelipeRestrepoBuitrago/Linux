@@ -3,19 +3,19 @@ inclusion: fileMatch
 fileMatchPattern: '**/*.{py,java,js,jsx,ts,tsx,html,css,scss,ipynb,json},.kiro/specs/**/*'
 ---
 
-# Estándar de cobertura de pruebas
+# Test coverage standard
 
-Cobertura **mínima** por capa:
+**Minimum** coverage per layer:
 
-- **Dominio**: > 90%.
-- **Casos de uso**: >= 85%.
-- **Adaptadores**: >= 70%.
+- **Domain**: > 90%.
+- **Use cases**: >= 85%.
+- **Adapters**: >= 70%.
 - **Global**: >= 80%.
 
-Estos son mínimos. Lo recomendable es mantener todas las capas por encima del **90%**.
+These are minimums. The recommendation is to keep all layers above **90%**.
 
-## Reglas
+## Rules
 
-- Prioriza pruebas de la lógica de negocio (dominio y casos de uso).
-- La cobertura es un piso, no una meta: cubre casos límite y rutas de error, no solo la ruta feliz.
-- No se integra código que baje la cobertura por debajo del mínimo de su capa.
+- Prioritize tests of business logic (domain and use cases).
+- Coverage is a floor, not a goal: cover edge cases and error paths, not just the happy path.
+- Code that drops coverage below its layer minimum is not integrated.

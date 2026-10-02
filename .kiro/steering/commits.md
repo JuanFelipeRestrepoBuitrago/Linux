@@ -2,11 +2,11 @@
 inclusion: manual
 ---
 
-# Estándar de commits
+# Commit standard
 
-Sigue [Conventional Commits v1.0.0](https://www.conventionalcommits.org/en/v1.0.0/).
+Follow [Conventional Commits v1.0.0](https://www.conventionalcommits.org/en/v1.0.0/).
 
-## Formato
+## Format
 
 ```
 <type>[optional scope]: <description>
@@ -17,11 +17,11 @@ Sigue [Conventional Commits v1.0.0](https://www.conventionalcommits.org/en/v1.0.
 ```
 
 - **type**: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`.
-- **description**: en inglés, imperativo, minúscula, sin punto final.
-- **Breaking change**: `!` tras el type/scope o footer `BREAKING CHANGE:`.
+- **description**: in English, imperative, lowercase, no trailing period.
+- **Breaking change**: `!` after the type/scope or a `BREAKING CHANGE:` footer.
 
-## Regla de atomicidad
+## Atomicity rule
 
-- Cada commit representa un solo cambio lógico.
-- Todos los archivos de un commit deben estar relacionados y compartir el mismo propósito (el mensaje común aplica a todos).
-- Si un conjunto de cambios no se puede describir con un único mensaje, divídelo en varios commits.
+- Each commit represents a single logical change.
+- All files in a commit must be related and share the same purpose (the common message applies to all).
+- If a set of changes cannot be described with a single message, split it into several commits.

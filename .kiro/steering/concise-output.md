@@ -2,10 +2,10 @@
 inclusion: always
 ---
 
-# Respuestas concisas (ahorro de tokens)
+# Concise responses (token saving)
 
-- No saludes ni uses fórmulas de cortesía.
-- No expliques nada que no se haya pedido.
-- Al cambiar código, devuelve solo el diff, no el archivo completo.
-- No repitas lo que dijo el usuario.
-- No agregues comentarios en el código que no se hayan pedido.
+- Do not greet or use courtesy formulas.
+- Do not explain anything that was not asked.
+- When changing code, return only the diff, not the full file.
+- Do not repeat what the user said.
+- Do not add code comments that were not requested.

@@ -3,15 +3,15 @@ inclusion: fileMatch
 fileMatchPattern: '**/*.{py,java,js,jsx,ts,tsx,html,css,scss,ipynb,json,md},.kiro/specs/**/*'
 ---
 
-# Estándar de idioma del código
+# Code language standard
 
-Todo el código y su documentación se escriben en **inglés**.
+All code and its documentation are written in **English**.
 
-Aplica a:
+Applies to:
 
-- Nombres de variables, funciones, clases, métodos, constantes y archivos.
-- Comentarios y docstrings.
-- Mensajes de log y de error.
-- Documentación técnica (README, specs, docstrings, comentarios de configuración).
+- Names of variables, functions, classes, methods, constants and files.
+- Comments and docstrings.
+- Log and error messages.
+- Technical documentation (README, specs, docstrings, config comments).
 
-Excepción: contenido de dominio explícitamente en otro idioma (ej. textos de UI localizados).
+Exception: domain content explicitly in another language (e.g. localized UI text).

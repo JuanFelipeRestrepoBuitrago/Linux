@@ -3,10 +3,10 @@ inclusion: fileMatch
 fileMatchPattern: '**/*.{py,java,js,jsx,ts,tsx,html,css,scss,ipynb,json,md},.kiro/specs/**/*'
 ---
 
-# Estándar de documentación
+# Documentation standard
 
-- Toda API pública (función, método, clase) lleva docstring/JSDoc explicando propósito, parámetros, retorno y errores.
-- Cada módulo o paquete tiene un README breve con su responsabilidad y cómo usarlo.
-- Documenta el *porqué*, no el *qué* obvio; el código explica el qué.
-- Mantén la documentación sincronizada con el código en el mismo commit del cambio.
-- Toda la documentación en inglés.
+- Every public API (function, method, class) has a docstring/JSDoc explaining purpose, parameters, return value and errors.
+- Each module or package has a brief README with its responsibility and how to use it.
+- Document the _why_, not the obvious _what_; the code explains the what.
+- Keep documentation in sync with the code in the same commit as the change.
+- All documentation in English.

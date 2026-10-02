@@ -2,23 +2,23 @@
 inclusion: manual
 ---
 
-# Estándar de Gitflow
+# Gitflow standard
 
-## Ramas protegidas (no se modifican directamente)
+## Protected branches (not modified directly)
 
-- `main` → producción.
-- `release` → preproducción.
-- `development` → integración.
+- `main` → production.
+- `release` → pre-production.
+- `development` → integration.
 
-A estas ramas **solo** se llega por pull request.
+These branches are **only** reached through pull requests.
 
-## Ramas de trabajo → destino del PR
+## Work branches → PR target
 
-- `feature/<nombre>` → PR hacia `development`.
-- `bugfix/<nombre>` → PR hacia `release`.
-- `hotfix/<nombre>` → PR hacia `main`.
+- `feature/<name>` → PR into `development`.
+- `bugfix/<name>` → PR into `release`.
+- `hotfix/<name>` → PR into `main`.
 
-## Reglas
+## Rules
 
-- Nunca hacer commit ni push directo a `main`, `release` o `development`.
-- Cada cambio nace en su rama de trabajo y se integra vía pull request.
+- Never commit or push directly to `main`, `release` or `development`.
+- Every change starts in its work branch and is integrated via pull request.

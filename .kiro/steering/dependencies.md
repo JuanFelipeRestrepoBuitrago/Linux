@@ -3,11 +3,11 @@ inclusion: fileMatch
 fileMatchPattern: '**/{package.json,requirements.txt,pyproject.toml,pom.xml,build.gradle,go.mod,Cargo.toml,*.csproj}'
 ---
 
-# Estándar de dependencias
+# Dependencies standard
 
-- Fija versiones **exactas o ancladas**; evita rangos abiertos.
-- Prefiere paquetes conocidos y activamente mantenidos.
-- Revisa nombres sospechosos (typosquatting) antes de añadir una dependencia.
-- Justifica cada dependencia nueva; evita añadir librerías para lo que la stdlib resuelve.
-- Mantén un lockfile versionado.
-- Revisa vulnerabilidades conocidas antes de integrar.
+- Pin **exact or anchored** versions; avoid open ranges.
+- Prefer well-known, actively maintained packages.
+- Check for suspicious names (typosquatting) before adding a dependency.
+- Justify every new dependency; avoid adding libraries for what the stdlib already solves.
+- Keep a versioned lockfile.
+- Review known vulnerabilities before integrating.

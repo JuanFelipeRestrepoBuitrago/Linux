@@ -3,34 +3,34 @@ inclusion: fileMatch
 fileMatchPattern: '**/*.{py,java,js,jsx,ts,tsx,html,css,scss,ipynb,json},.kiro/specs/**/*'
 ---
 
-# Estándar de logging
+# Logging standard
 
-Logging estructurado global. **Prohibido usar `print`**; se emite JSON manejado de forma centralizada.
+Global structured logging. **Using `print` is forbidden**; emit JSON handled centrally.
 
-## Campos del log (JSON)
+## Log fields (JSON)
 
-- `@timestamp`: fecha y hora del evento (ISO 8601 UTC).
+- `@timestamp`: event date and time (ISO 8601 UTC).
 - `level`: `TRACE` | `DEBUG` | `INFO` | `WARN` | `ERROR` | `CRITICAL`.
-- `message`: mensaje del evento (clave estable, no frase concatenada).
+- `message`: event message (stable key, not a concatenated phrase).
 - `service.name`, `service.version`, `service.environment` (`local` | `dev` | `uat` | `prod`).
-- `logger`: objeto/clase que emite el log.
-- `correlationId`: id único del evento; obligatorio en eventos `ERROR`.
+- `logger`: object/class emitting the log.
+- `correlationId`: unique event id; required on `ERROR` events.
 
-### Solo en eventos ERROR
+### ERROR events only
 
 - `error.type`, `error.message`.
-- `stackTrace`: **opcional**, solo cuando se requiera y solo en `dev`/`release`. Debe ir saneado.
+- `stackTrace`: **optional**, only when required and only in `dev`/`release`. Must be sanitized.
 
-## Correlación
+## Correlation
 
-- El middleware lee el header `X-Correlation-ID`; si llega, se reutiliza; si no, se genera un UUID estable y se devuelve en la respuesta.
+- The middleware reads the `X-Correlation-ID` header; if present, it is reused; if not, a stable UUID is generated and returned in the response.
 
-## Reglas
+## Rules
 
-- Las excepciones se loguean en **un único punto global** (error handler); nunca en cada capa.
-- Prohibido **log-and-throw**.
-- Nunca loguear datos sensibles; si se incluyen, deben ir **enmascarados**.
-- Prohibidos mensajes genéricos que impidan buscar/alertar con precisión.
-- Prohibido concatenar strings para el mensaje: usa campos estructurados.
-- Prohibido serializar objetos completos.
-- Prohibido spam en loops de alto volumen sin techo (rate limit).
+- Exceptions are logged at **a single global point** (error handler); never in every layer.
+- **Log-and-throw** is forbidden.
+- Never log sensitive data; if included, it must be **masked**.
+- Generic messages that prevent precise searching/alerting are forbidden.
+- Concatenating strings for the message is forbidden: use structured fields.
+- Serializing full objects is forbidden.
+- Spamming in high-volume loops without a cap (rate limit) is forbidden.

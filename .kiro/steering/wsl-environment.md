@@ -2,12 +2,12 @@
 inclusion: always
 ---
 
-# Entorno de ejecución: WSL (Ubuntu)
+# Execution environment: WSL (Ubuntu)
 
-Este entorno corre sobre **WSL con Ubuntu (Linux)**.
+This environment runs on **WSL with Ubuntu (Linux)**.
 
-- Usa siempre comandos y sintaxis de **Ubuntu/Linux** (bash/zsh): `ls`, `rm`, `mkdir -p`, `apt`, rutas con `/`.
-- **Nunca** uses comandos de Windows (PowerShell, `cmd`, `dir`, rutas con `\`, `.exe`).
-- Rutas absolutas estilo Linux (`/home/pipas/...`), no `C:\`.
+- Always use **Ubuntu/Linux** commands and syntax (bash/zsh): `ls`, `rm`, `mkdir -p`, `apt`, paths with `/`.
+- **Never** use Windows commands (PowerShell, `cmd`, `dir`, paths with `\`, `.exe`).
+- Linux-style absolute paths (`/home/pipas/...`), not `C:\`.
 
-Esto evita reintentos y consumo innecesario de tokens.
+This avoids retries and unnecessary token consumption.

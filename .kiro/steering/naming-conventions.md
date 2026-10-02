@@ -3,12 +3,12 @@ inclusion: fileMatch
 fileMatchPattern: '**/*.{py,java,js,jsx,ts,tsx,html,css,scss,ipynb,json},.kiro/specs/**/*'
 ---
 
-# Estándar de convenciones de nombres
+# Naming conventions standard
 
-- Nombres en **inglés**, descriptivos y sin abreviaturas ambiguas.
-- Clases/Tipos: `PascalCase`.
-- Funciones/métodos/variables: `camelCase` (JS/TS/Java) o `snake_case` (Python), según el idioma.
-- Constantes: `UPPER_SNAKE_CASE`.
-- Booleanos con prefijo de intención: `is`, `has`, `can`, `should`.
-- Archivos y carpetas coherentes con la convención del lenguaje/framework.
-- Evita nombres genéricos (`data`, `info`, `temp`, `manager`) sin contexto.
+- Names in **English**, descriptive and without ambiguous abbreviations.
+- Classes/Types: `PascalCase`.
+- Functions/methods/variables: `camelCase` (JS/TS/Java) or `snake_case` (Python), depending on the language.
+- Constants: `UPPER_SNAKE_CASE`.
+- Booleans with an intent prefix: `is`, `has`, `can`, `should`.
+- Files and folders consistent with the language/framework convention.
+- Avoid generic names (`data`, `info`, `temp`, `manager`) without context.

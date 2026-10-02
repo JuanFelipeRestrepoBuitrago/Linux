@@ -3,15 +3,15 @@ inclusion: fileMatch
 fileMatchPattern: '**/*.{py,java,js,jsx,ts,tsx,html,css,scss,ipynb,json},.kiro/specs/**/*'
 ---
 
-# Estándar de arquitectura
+# Architecture standard
 
-Diseña con **Clean Architecture** y favorece **arquitectura hexagonal** (ports & adapters).
+Design with **Clean Architecture** and favor **hexagonal architecture** (ports & adapters).
 
-## Reglas
+## Rules
 
-- La dependencia siempre apunta hacia adentro: `adapters → use cases → domain`. El dominio no conoce frameworks ni detalles de infraestructura.
-- El dominio contiene entidades y reglas de negocio puras, sin dependencias externas.
-- Los casos de uso orquestan el dominio y definen **puertos** (interfaces).
-- Los **adaptadores** (driving/driven) implementan los puertos: HTTP, DB, mensajería, etc.
-- La inyección de dependencias resuelve las implementaciones desde fuera hacia adentro.
-- Aísla frameworks y librerías detrás de puertos para poder sustituirlos.
+- Dependencies always point inward: `adapters → use cases → domain`. The domain knows nothing about frameworks or infrastructure details.
+- The domain holds pure entities and business rules, with no external dependencies.
+- Use cases orchestrate the domain and define **ports** (interfaces).
+- **Adapters** (driving/driven) implement the ports: HTTP, DB, messaging, etc.
+- Dependency injection resolves implementations from the outside in.
+- Isolate frameworks and libraries behind ports so they can be replaced.

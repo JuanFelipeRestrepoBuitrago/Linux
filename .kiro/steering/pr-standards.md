@@ -2,18 +2,18 @@
 inclusion: manual
 ---
 
-# Estándar de pull requests
+# Pull request standard
 
-Toda descripción de PR incluye:
+Every PR description includes:
 
-- **Qué cambió**: resumen conciso del cambio.
-- **Por qué**: motivación o issue asociado.
-- **Cómo se probó**: pruebas ejecutadas o pasos de verificación.
-- **Breaking changes**: indícalos explícitamente o "None".
+- **What changed**: concise summary of the change.
+- **Why**: motivation or associated issue.
+- **How it was tested**: tests run or verification steps.
+- **Breaking changes**: state them explicitly or "None".
 
-## Reglas
+## Rules
 
-- Título conciso siguiendo Conventional Commits (< 70 caracteres).
-- PR pequeño y enfocado a un solo objetivo.
-- El destino de la rama sigue el estándar de Gitflow.
-- No mezclar refactors grandes con cambios funcionales en el mismo PR.
+- Concise title following Conventional Commits (< 70 characters).
+- Small PR focused on a single objective.
+- Branch target follows the Gitflow standard.
+- Do not mix large refactors with functional changes in the same PR.
