@@ -1,0 +1,30 @@
+rules:
+  - capability: fs_read
+    effect: allow
+    match:
+      - "*"
+  - capability: fs_write
+    effect: allow
+    match:
+      - /home/pipas/**
+  - capability: shell
+    effect: allow
+    match:
+      - "*"
+  - capability: web_search
+    effect: ask
+  - capability: web_fetch
+    effect: allow
+    match:
+      - blog.sergiomarquez.dev
+  - capability: skill
+    effect: allow
+    match:
+      - commit-workflow
+  - capability: mcp
+    effect: allow
+    match:
+      - engram/mem_current_project
+      - engram/mem_list_projects
+      - engram/mem_save
+      - engram/mem_search
