@@ -1,0 +1,22 @@
+# Secrets — never commit credentials
+*.env
+.env
+.env.*
+*.key
+*.pem
+credentials.json
+
+# Engram local project scope / state
+.engram/
+
+# Kiro runtime/machine-local state (keep steering, skills, agents, hooks, settings)
+.kiro/logs/
+.kiro/sessions/
+.kiro/session-index/
+.kiro/workspace-roots/
+.kiro/sandbox-state/
+.kiro/settings/mcp.json.bak
+
+# OS noise
+.DS_Store
+Thumbs.db
