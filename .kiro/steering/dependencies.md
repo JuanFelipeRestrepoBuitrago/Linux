@@ -1,6 +1,7 @@
 ---
 inclusion: fileMatch
-fileMatchPattern: '**/{package.json,requirements.txt,pyproject.toml,pom.xml,build.gradle,go.mod,Cargo.toml,*.csproj}'
+fileMatchPattern:
+    - '**/{package.json,requirements.txt,pyproject.toml,pom.xml,build.gradle,go.mod,Cargo.toml,*.csproj}'
 ---
 
 # Dependencies standard

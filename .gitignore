@@ -17,6 +17,9 @@ credentials.json
 .kiro/sandbox-state/
 .kiro/settings/mcp.json.bak
 
+# Per-workspace MCP config (keep only mcp.json.example in the repo)
+.kiro/settings/mcp.json
+
 # OS noise
 .DS_Store
 Thumbs.db

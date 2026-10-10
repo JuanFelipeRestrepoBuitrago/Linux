@@ -1,6 +1,8 @@
 ---
 inclusion: fileMatch
-fileMatchPattern: '**/*.{py,java,js,jsx,ts,tsx},.kiro/specs/**/*'
+fileMatchPattern:
+    - '**/*.{py,java,js,jsx,ts,tsx}'
+    - '.kiro/specs/**/*'
 ---
 
 # API design standard (REST)

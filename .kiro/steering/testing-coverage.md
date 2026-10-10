@@ -1,6 +1,8 @@
 ---
 inclusion: fileMatch
-fileMatchPattern: '**/*.{py,java,js,jsx,ts,tsx,html,css,scss,ipynb,json},.kiro/specs/**/*'
+fileMatchPattern:
+    - '**/*.{py,java,js,jsx,ts,tsx,html,css,scss,ipynb,json}'
+    - '.kiro/specs/**/*'
 ---
 
 # Test coverage standard

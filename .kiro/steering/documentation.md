@@ -1,6 +1,8 @@
 ---
 inclusion: fileMatch
-fileMatchPattern: '**/*.{py,java,js,jsx,ts,tsx,html,css,scss,ipynb,json,md},.kiro/specs/**/*'
+fileMatchPattern:
+    - '**/*.{py,java,js,jsx,ts,tsx,html,css,scss,ipynb,json,md}'
+    - '.kiro/specs/**/*'
 ---
 
 # Documentation standard

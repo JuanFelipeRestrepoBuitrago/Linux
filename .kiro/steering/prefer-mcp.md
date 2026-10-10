@@ -1,3 +1,7 @@
+---
+inclusion: always
+---
+
 # Prefer MCP servers over built-in equivalents
 
 When an MCP server covers a capability, use it instead of the built-in tool or raw shell command.

@@ -1,6 +1,8 @@
 ---
 inclusion: fileMatch
-fileMatchPattern: '**/*.{py,java,js,jsx,ts,tsx,ipynb},.kiro/specs/**/*'
+fileMatchPattern:
+    - '**/*.{py,java,js,jsx,ts,tsx,ipynb}'
+    - '.kiro/specs/**/*'
 ---
 
 # Error handling standard
