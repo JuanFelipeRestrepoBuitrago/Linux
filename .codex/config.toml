@@ -1,0 +1,75 @@
+[mcp_servers.context7]
+command = "npx"
+args = ["-y", "@upstash/context7-mcp"]
+enabled = true
+startup_timeout_sec = 30
+
+[mcp_servers.fetch]
+command = "uvx"
+args = ["mcp-server-fetch"]
+enabled = true
+startup_timeout_sec = 30
+
+[mcp_servers.docker]
+command = "uvx"
+args = ["docker-mcp-server"]
+enabled = false
+
+disabled_tools = [
+  "container_exec",
+  "container_remove",
+  "container_prune",
+  "image_prune",
+  "volume_remove",
+  "volume_prune",
+  "compose_down",
+  "stack_deploy",
+  "system_login",
+  "secret_create"
+]
+
+# [mcp_servers.engram]
+# command = "/home/pipas/.local/bin/engram"
+# args = [
+#   "mcp",
+#   "--tools=agent",
+#   "--project",
+#   "YOUR_PROJECT"
+# ]
+# enabled = true
+# startup_timeout_sec = 20
+#
+# disabled_tools = [
+#   "mem_delete",
+#   "mem_doctor",
+#   "mem_judge",
+#   "mem_compare",
+#   "mem_current_project"
+# ]
+
+[mcp_servers.github-personal]
+command = "docker"
+args = [
+  "run",
+  "-i",
+  "--rm",
+  "-e",
+  "GITHUB_PERSONAL_ACCESS_TOKEN",
+  "ghcr.io/github/github-mcp-server",
+  "stdio"
+]
+enabled = false
+startup_timeout_sec = 30
+disabled_tools = [
+  "create_or_update_file",
+  "delete_file",
+  "delete_repository",
+  "create_repository",
+  "fork_repository",
+  "issue_write",
+  "create_branch",
+  "add_issue_comment"
+]
+
+[mcp_servers.github-personal.env]
+GITHUB_PERSONAL_ACCESS_TOKEN = "YOUR_GITHUB_TOKEN"

@@ -1,7 +1,8 @@
-# Workspace Agent Instructions
+# Global Codex Configuration Instructions
 
-These instructions consolidate the project rules from `.kiro/steering` for use
-by Codex. They apply to work in this workspace.
+These instructions consolidate the rules from `.kiro/steering` for use by
+Codex. This repository stores global Codex configuration, so these rules are
+intended to guide Codex globally rather than apply only to a single project.
 
 Rules marked **always** apply to every task. Rules marked **when applicable**
 apply when the relevant files, code, or workflow is involved. Commit, Gitflow,
@@ -43,7 +44,8 @@ raw shell command.
 ### Git
 
 - Use the `git` shell command for local Git operations (status, diff, log, add,
-  commit, branch, and similar); there is no local Git MCP.
+  commit, branch, and similar); there is no Git MCP for repository-local
+  operations.
 - Prefer the GitHub MCP server for GitHub operations (pull requests, issues,
   reviews, releases) over scripting the GitHub API or using raw shell.
 - Fall back to shell only when the GitHub MCP is unavailable or the operation
@@ -275,10 +277,11 @@ Rules:
 
 ## Engram persistent memory (always, when Engram is available)
 
-Treat Engram as the project's long-term memory and prefer it over asking the
-user about project facts. The workspace's configured Engram server defines the
-project scope. Do not validate `.engram/config.json` and do not run `engram
-init`; scoping is handled by the per-workspace MCP configuration.
+Treat Engram as the long-term memory for the relevant project or global
+configuration and prefer it over asking the user about known facts. The global
+configuration repository's configured Engram server defines the project scope.
+Do not validate `.engram/config.json` and do not run `engram init`; scoping is
+handled by the global configuration's MCP setup.
 
 ### Session start
 
@@ -413,4 +416,4 @@ If the context is compacted or reset, or `FIRST ACTION REQUIRED` appears:
 2. Then call `mem_context` to recover additional context.
 3. Only then continue working.
 
-## End of workspace instructions
+## End of global configuration instructions
