@@ -256,6 +256,16 @@
           },
           "disabled": false,
           "autoApprove": []
+      },
+      "office-mcp": {
+          "command": "/home/$YOUR_USER/tools/office-mcp/.venv/bin/python",
+          "args": ["/home/$YOUR_USER/tools/office-mcp/server.py"],
+          "env": {
+              "PYTHONUTF8": "1",
+              "PYTHONIOENCODING": "utf-8",
+              "OFFICE_MCP_DEFAULT_FOLDER": "$YOUR_FOLDER"
+          },
+          "disabled": false
       }
   }
 }
