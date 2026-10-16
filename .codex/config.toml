@@ -72,4 +72,33 @@ disabled_tools = [
 ]
 
 [mcp_servers.github-personal.env]
-GITHUB_PERSONAL_ACCESS_TOKEN = "YOUR_GITHUB_TOKEN"
+GITHUB_PERSONAL_ACCESS_TOKEN = "$YOUR_GITHUB_TOKEN"
+
+[mcp_servers.linkedin]
+command = "uvx"
+args = ["mcp-server-linkedin@latest"]
+enabled = true
+startup_timeout_sec = 300
+
+[mcp_servers.linkedin.env]
+UV_HTTP_TIMEOUT = "300"
+
+[mcp_servers.document-loader]
+command = "uvx"
+args = ["awslabs.document-loader-mcp-server@latest"]
+enabled = true
+startup_timeout_sec = 60
+
+[mcp_servers.document-loader.env]
+FASTMCP_LOG_LEVEL = "ERROR"
+
+[mcp_servers.office-mcp]
+command = "/home/pipas/$YOUR_USER/office-mcp/.venv/bin/python"
+args = ["/home/pipas/$YOUR_USER/office-mcp/server.py"]
+enabled = true
+startup_timeout_sec = 30
+
+[mcp_servers.office-mcp.env]
+PYTHONUTF8 = "1"
+PYTHONIOENCODING = "utf-8"
+OFFICE_MCP_DEFAULT_FOLDER = "$YOUR_FOLDER"
