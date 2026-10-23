@@ -14,12 +14,11 @@ All commands use Ubuntu/Linux syntax (`apt`, bash/zsh, `/` paths).
 
 - [How Kiro loads this config](#how-kiro-loads-this-config)
 - [Common prerequisites](#common-prerequisites)
-    - [1. Node.js (`npx`)](#1-nodejs-npx)
-    - [2. uv / uvx (Python tool runner)](#2-uv--uvx-python-tool-runner)
-    - [3. Docker](#3-docker)
+    - [1. uv / uvx (Python tool runner)](#1-uv--uvx-python-tool-runner)
+    - [2. Docker](#2-docker)
 - [Enabling the config](#enabling-the-config)
 - [Per-server setup](#per-server-setup)
-    - [context7](#context7)
+    - [context7 (Kiro power)](#context7-kiro-power)
     - [docker](#docker)
     - [engram](#engram)
     - [fetch](#fetch)
@@ -47,40 +46,10 @@ All commands use Ubuntu/Linux syntax (`apt`, bash/zsh, `/` paths).
 
 ## Common prerequisites
 
-The servers use four runtimes: `npx` (Node), `uvx` (uv), `docker`, and a local
-Python virtualenv. Install the ones you need.
+The servers use three runtimes: `uvx` (uv), `docker`, and a local Python
+virtualenv. Install the ones you need.
 
-### 1. Node.js (`npx`)
-
-Needed by: `context7`.
-
-`npx` ships with Node.js. The recommended way to manage Node on this setup is
-`nvm` (see `linux_config/programming_languages/nodejs_help.md`).
-
-```bash
-# Install nvm
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
-```
-
-Add nvm to your shell (`~/.zshrc`), then reload:
-
-```bash
-echo '# NodeJS Package Manager' >> ~/.zshrc && \
-echo 'export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"' >> ~/.zshrc && \
-echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> ~/.zshrc && \
-echo '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"' >> ~/.zshrc
-source ~/.zshrc
-```
-
-Install and set a default Node LTS:
-
-```bash
-nvm install --lts
-nvm alias default 'lts/*'
-node --version && npx --version
-```
-
-### 2. uv / uvx (Python tool runner)
+### 1. uv / uvx (Python tool runner)
 
 Needed by: `docker` (docker-mcp-server), `fetch`, `linkedin`, `document-loader`.
 
@@ -105,7 +74,7 @@ If `uvx` is not found, add its directory to PATH:
 echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc && source ~/.zshrc
 ```
 
-### 3. Docker
+### 2. Docker
 
 Needed by: `github-personal` (runs the GitHub MCP server image). Optional for
 the `docker` MCP server, which talks to your Docker daemon.
@@ -159,19 +128,19 @@ Then edit `mcp.json`:
 
 ## Per-server setup
 
-### context7
+### context7 (Kiro power)
 
-Up-to-date library/documentation lookups.
+Up-to-date library/documentation lookups. In Kiro this is provided by the
+**context7 power**, not by an MCP server entry in `mcp.json`. Do not add a
+`context7` block to this config.
 
-- Runtime: `npx` (Node) — install [Node.js](#1-nodejs-npx).
-- No credentials required.
-- Status in example: enabled.
+To install it, open Kiro Powers (search the command palette for `Powers`, or
+use the Powers view in the Kiro panel) and install **context7** from there.
+Kiro wires up the power's MCP server for you under its own `powers` section of
+the user-level config.
 
-Smoke test:
-
-```bash
-npx -y @upstash/context7-mcp --help
-```
+Once installed, just ask Kiro about any library or framework and it uses the
+power automatically.
 
 ### docker
 
@@ -360,9 +329,9 @@ Tips:
 
 ## Verifying and troubleshooting
 
-- `command -v npx uvx docker` — confirm the runtimes are on PATH.
+- `command -v uvx docker` — confirm the runtimes are on PATH.
 - Reconnect servers from the MCP Server view after editing `mcp.json`.
-- `uvx`/`npx` download packages on first run; the first start can be slow.
+- `uvx` downloads packages on first run; the first start can be slow.
 - Strict JSON: remove `//` comments and trailing commas, or the file fails to
   parse. Validate with:
 
