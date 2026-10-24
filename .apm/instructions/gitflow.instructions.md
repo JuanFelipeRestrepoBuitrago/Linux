@@ -1,3 +1,6 @@
+---
+description: Gitflow standard - protected branches reached only via pull requests, work branches map to PR targets.
+---
 # Gitflow standard
 
 ## Protected branches (not modified directly)

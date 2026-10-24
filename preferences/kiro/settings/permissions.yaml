@@ -6,7 +6,7 @@ rules:
   - capability: fs_write
     effect: allow
     match:
-      - /home/${USER}/**
+      - "**"
   - capability: shell
     effect: allow
     match:
@@ -16,15 +16,16 @@ rules:
   - capability: web_fetch
     effect: allow
     match:
-      - blog.sergiomarquez.dev
+      - '*'
   - capability: skill
     effect: allow
     match:
-      - commit-workflow
+      - '*'
   - capability: mcp
     effect: allow
     match:
-      - engram/mem_current_project
-      - engram/mem_list_projects
-      - engram/mem_save
-      - engram/mem_search
+      - '*'
+  - capability: power
+    effect: allow
+    match:
+      - '*'

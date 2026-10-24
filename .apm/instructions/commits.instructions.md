@@ -1,3 +1,6 @@
+---
+description: Commit standard - Conventional Commits v1.0.0 format, English imperative descriptions, atomic commits.
+---
 # Commit standard
 
 Follow [Conventional Commits v1.0.0](https://www.conventionalcommits.org/en/v1.0.0/).

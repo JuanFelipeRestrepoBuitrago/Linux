@@ -1,3 +1,6 @@
+---
+description: Pull request standard - required description sections, concise Conventional Commits title, Gitflow target.
+---
 # Pull request standard
 
 Every PR description includes:
