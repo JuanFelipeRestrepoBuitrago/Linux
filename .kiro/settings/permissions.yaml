@@ -6,13 +6,13 @@ rules:
   - capability: fs_write
     effect: allow
     match:
-      - /home/pipas/**
+      - /home/${USER}/**
   - capability: shell
     effect: allow
     match:
       - "*"
   - capability: web_search
-    effect: ask
+    effect: allow
   - capability: web_fetch
     effect: allow
     match:

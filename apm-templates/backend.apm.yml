@@ -1,0 +1,38 @@
+# backend.apm.yml — backend-oriented APM consumer manifest
+#
+# Pulls from JuanFelipeRestrepoBuitrago/Linux:
+#   minimal set PLUS backend engineering concerns.
+#   - instructions (single-file refs): ponytail, security, concise-output,
+#       architecture, logging, testing-coverage, error-handling,
+#       naming-conventions, documentation
+#   - skills (subpath refs): commit-workflow, create-pr, generate-tests, review-diff
+#   - agents (single-file refs): code-reviewer, test-writer
+# No MCP servers.
+#
+# Usage: drop this file into a consumer project as its apm.yml, then run:
+#   apm install
+name: backend-consumer
+version: 0.1.0
+description: Backend subset — core + architecture/logging/testing/error-handling instructions, test & review skills, reviewer/test-writer agents.
+targets:
+  - kiro
+dependencies:
+  apm:
+    # Instruction primitives — single-file refs end in .instructions.md
+    - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/ponytail.instructions.md
+    - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/security.instructions.md
+    - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/concise-output.instructions.md
+    - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/architecture.instructions.md
+    - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/logging.instructions.md
+    - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/testing-coverage.instructions.md
+    - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/error-handling.instructions.md
+    - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/naming-conventions.instructions.md
+    - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/documentation.instructions.md
+    # Agent primitives — single-file refs end in .agent.md
+    - JuanFelipeRestrepoBuitrago/Linux/.apm/agents/code-reviewer.agent.md
+    - JuanFelipeRestrepoBuitrago/Linux/.apm/agents/test-writer.agent.md
+    # Skill primitives — owner/repo/skills/<name> subpath form
+    - JuanFelipeRestrepoBuitrago/Linux/skills/commit-workflow
+    - JuanFelipeRestrepoBuitrago/Linux/skills/create-pr
+    - JuanFelipeRestrepoBuitrago/Linux/skills/generate-tests
+    - JuanFelipeRestrepoBuitrago/Linux/skills/review-diff

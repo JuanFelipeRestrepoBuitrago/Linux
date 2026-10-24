@@ -1,0 +1,760 @@
+lockfile_version: '1'
+dependencies: []
+deployments:
+- kind: project-relative
+  target: kiro
+  value: .kiro/agents/code-reviewer.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:ebf16b515d07a865cf9670e4dcf3f097c2e3de009dd784602b2d4b6e3fe36dd5
+- kind: project-relative
+  target: kiro
+  value: .kiro/agents/git-committer.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:af8b011b69e5a352435c022ea8474f6ca6ddb0dd4cb65918fba4f3d890427b75
+- kind: project-relative
+  target: kiro
+  value: .kiro/agents/study-helper.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:38e843a0489d9bc3a6e68dd9e14ff3f9e88d63e2ccb871067ba18da8df369746
+- kind: project-relative
+  target: kiro
+  value: .kiro/agents/test-writer.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:5fc83fe9bdb738e6b3bbae9172b9e38ac25c12acf0627a263fd8a9fbfdf11571
+- kind: project-relative
+  target: kiro
+  value: .kiro/hooks/personal-configurations-engram-save-on-stop-stop-1.json
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:411ee49b956751a92f0f08e8cd0b7f21b3cb416e036ba99d6a9c3cbb213f8a6b
+- kind: project-relative
+  target: kiro
+  value: .kiro/skills/commit-workflow
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: null
+- kind: project-relative
+  target: kiro
+  value: .kiro/skills/commit-workflow/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:7857e4a0a1e299742106ed5ca1fef53b6ebf572a0e85e4107bf8aea41b6cc2e0
+- kind: project-relative
+  target: kiro
+  value: .kiro/skills/commit-workflow/commits.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:633300ed876e52aef3bfa10568652a59d973c2706395db9bd9922fdd5691dfd5
+- kind: project-relative
+  target: kiro
+  value: .kiro/skills/commit-workflow/gitflow.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:63373c089246093d3d944a8778e3ffaf35f4ee2d13c00176ee14c200250b2447
+- kind: project-relative
+  target: kiro
+  value: .kiro/skills/create-pr
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: null
+- kind: project-relative
+  target: kiro
+  value: .kiro/skills/create-pr/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:0a60349b87d7775679fda4fb63f4eb27bfc64ec2a6abf86ec075760c9e72149b
+- kind: project-relative
+  target: kiro
+  value: .kiro/skills/create-pr/pr-standards.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:67a6182cc77530e568471b33b3ac1bae8e3a53f01dda777d98c6bba892808345
+- kind: project-relative
+  target: kiro
+  value: .kiro/skills/generate-tests
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: null
+- kind: project-relative
+  target: kiro
+  value: .kiro/skills/generate-tests/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:36fb6bd22dd7a0c1137573bbc791cdd3942b6c921891fe413881e76a1d4176e4
+- kind: project-relative
+  target: kiro
+  value: .kiro/skills/review-diff
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: null
+- kind: project-relative
+  target: kiro
+  value: .kiro/skills/review-diff/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:90fd7481cd064ab65d8f89a2d703e772d74f22ba3e1c0f9c4f51ee1c8ae833b0
+- kind: project-relative
+  target: kiro
+  value: .kiro/skills/setup-graphify
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: null
+- kind: project-relative
+  target: kiro
+  value: .kiro/skills/setup-graphify/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:aa86ec2aa6c2fac5e9914564e98f3bb180465080f5a653d2ec68432f1e01b157
+- kind: project-relative
+  target: kiro
+  value: .kiro/steering/api-design.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:f480babd04f710fa5f816f78cef542c0580397fbeb48bf0088ef62ef35bd0240
+- kind: project-relative
+  target: kiro
+  value: .kiro/steering/architecture.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:90ce797b61b58ae001a53e5585733c50f3699904953a9a19700c0ce4beb5a9e6
+- kind: project-relative
+  target: kiro
+  value: .kiro/steering/code-language.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:ed01dab998c195141f8542391d364b956a6a8afd97918a691d7f12cce026da60
+- kind: project-relative
+  target: kiro
+  value: .kiro/steering/code-quality.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:cbdb95ba5240e56ba818fd25c9aec5210bb9b6d91493f1d985909ef1e175e9c0
+- kind: project-relative
+  target: kiro
+  value: .kiro/steering/concise-output.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:435d958a1255bf76c6c72f9f9018c4c9b1933c3df1fd572c3e29925f8fc1dabe
+- kind: project-relative
+  target: kiro
+  value: .kiro/steering/dependencies.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:5b1eeedef322ea5862ad4d321b66b99ca88a97436bc202a88be36109b7f4477d
+- kind: project-relative
+  target: kiro
+  value: .kiro/steering/document-loader-mcp.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:f878956bfeb5834ccf43d46761b695c518d6370a4dbd0ac1f3b50ddb63c54fde
+- kind: project-relative
+  target: kiro
+  value: .kiro/steering/documentation.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:f9d4ee2c8b7b70d027ea5cc9fb18ad6bde3024d74b37b28d5b55fec31bb3da93
+- kind: project-relative
+  target: kiro
+  value: .kiro/steering/engram-memory.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:05b21949ac721b3c3f17cd803a87edcd2735a36bd6b111d5b27be1dc4284b09b
+- kind: project-relative
+  target: kiro
+  value: .kiro/steering/engram.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:74734b4204837bfb64f78e18851b9ab89ebf99ccc1c745553b580e41b9664bfc
+- kind: project-relative
+  target: kiro
+  value: .kiro/steering/error-handling.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:e772807bb2aecb4658ba16e9f19f22a5e0a7516d1467efa03cdfd3a93e3a9068
+- kind: project-relative
+  target: kiro
+  value: .kiro/steering/logging.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:534a5b36f60d35da8372910fd89890f72ad11e0e2b3ecc10a333620d941950eb
+- kind: project-relative
+  target: kiro
+  value: .kiro/steering/naming-conventions.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:08361cf1d1736cf2d6eb60f7b62910501c843e2b3a640deeb4a3f48d72f1ee22
+- kind: project-relative
+  target: kiro
+  value: .kiro/steering/ponytail.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:84bb7db7d7eb2bc2968f7813abc10857d9773a1ca18c5a1cc0647b3b140f21db
+- kind: project-relative
+  target: kiro
+  value: .kiro/steering/prefer-mcp.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:0fb5fae5bb7b8f57605c1a80f397987e54a9b52454302fedddba6500db921bf4
+- kind: project-relative
+  target: kiro
+  value: .kiro/steering/security.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:18d0853b7ec92e04efe30cc4ab8e623a060decb6af86190b5bfaad75ea0bba6e
+- kind: project-relative
+  target: kiro
+  value: .kiro/steering/testing-coverage.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:5c9417d4caf5f6954bdde9f68ef6a1654ecdbfa2b6510a31a249bdea11889390
+- kind: project-relative
+  target: kiro
+  value: .kiro/steering/wsl-environment.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:613304fb3f64493923ff7da2bc0e543e5e806ca0476e2a52ad196bd588272e4f
+- kind: uri
+  target: mcp
+  value: aws-mcp
+  runtime: kiro
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: null
+- kind: uri
+  target: mcp
+  value: docker
+  runtime: kiro
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: null
+- kind: uri
+  target: mcp
+  value: document-loader
+  runtime: kiro
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: null
+- kind: uri
+  target: mcp
+  value: fetch
+  runtime: kiro
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: null
+- kind: uri
+  target: mcp
+  value: github-personal
+  runtime: kiro
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: null
+- kind: uri
+  target: mcp
+  value: linkedin
+  runtime: kiro
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: null
+- kind: uri
+  target: mcp
+  value: office-mcp
+  runtime: kiro
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: null
+mcp_servers:
+- aws-mcp
+- docker
+- document-loader
+- engram
+- fetch
+- github-personal
+- linkedin
+- office-mcp
+mcp_configs:
+  aws-mcp:
+    name: aws-mcp
+    transport: stdio
+    args:
+    - mcp-proxy-for-aws@latest
+    - https://aws-mcp.us-east-1.api.aws/mcp
+    - --metadata
+    - INSTALL_SOURCE=aws-cli
+    registry: false
+    command: uvx
+    disabled: true
+  docker:
+    name: docker
+    transport: stdio
+    args:
+    - docker-mcp-server
+    registry: false
+    command: uvx
+    disabled: true
+    disabledTools:
+    - buildx_build
+    - buildx_bake
+    - buildx_imagetools_inspect
+    - buildx_imagetools_create
+    - buildx_list
+    - buildx_history_list
+    - buildx_history_inspect
+    - buildx_inspect
+    - buildx_du
+    - buildx_prune
+    - buildx_create
+    - buildx_use
+    - buildx_remove
+    - system_ping
+    - system_version
+    - system_info
+    - system_df
+    - host_list
+    - system_login
+    - system_logout
+    - system_events
+    - system_close
+    - system_reconnect
+    - compose_list
+    - config_create
+    - config_inspect
+    - config_list
+    - config_remove
+    - container_inspect
+    - container_list
+    - container_prune
+    - container_start
+    - container_pause
+    - container_unpause
+    - container_logs
+    - container_stats
+    - container_top
+    - container_exec
+    - container_commit
+    - container_diff
+    - container_rename
+    - container_update
+    - container_wait
+    - container_export
+    - container_archive_get
+    - container_archive_get_to_file
+    - container_archive_put
+    - context_list
+    - context_inspect
+    - context_create
+    - context_use
+    - context_remove
+    - image_build
+    - image_inspect
+    - image_registry_data
+    - image_list
+    - image_search
+    - image_prune
+    - image_prune_builds
+    - image_load
+    - image_history
+    - network_create
+    - network_inspect
+    - network_list
+    - network_prune
+    - network_remove
+    - network_connect
+    - network_disconnect
+    - node_inspect
+    - node_list
+    - node_update
+    - node_remove
+    - node_wait
+    - plugin_create
+    - plugin_inspect
+    - plugin_install
+    - plugin_privileges
+    - plugin_push
+    - plugin_list
+    - plugin_configure
+    - plugin_disable
+    - plugin_enable
+    - plugin_remove
+    - plugin_upgrade
+    - registry_tags
+    - registry_tag_wait
+    - registry_manifest
+    - registry_image_config
+    - hub_tags
+    - hub_repo_info
+    - hub_rate_limit
+    - service_create
+    - service_inspect
+    - service_list
+    - service_update
+    - service_remove
+    - service_ps
+    - service_logs
+    - service_scale
+    - service_rollback
+    - service_wait
+    - docs_lookup
+    - tool_list
+    - scout_cves
+    - scout_quickview
+    - scout_recommendations
+    - scout_compare
+    - scout_sbom
+    - secret_create
+    - secret_inspect
+    - secret_list
+    - secret_remove
+    - stack_deploy
+    - stack_list
+    - stack_ps
+    - stack_services
+    - stack_remove
+    - swarm_init
+    - swarm_join
+    - swarm_leave
+    - swarm_update
+    - swarm_inspect
+    - swarm_unlock
+    - swarm_unlock_key
+    - swarm_join_tokens
+    - swarm_task_inspect
+    - swarm_task_list
+    - swarm_task_logs
+    - volume_create
+    - volume_inspect
+    - volume_list
+    - volume_prune
+    - volume_remove
+    - container_create
+    - container_run
+    - container_stop
+    - container_restart
+    - container_kill
+    - container_remove
+    - image_import
+    - image_save
+    - image_tag
+    - compose_unpause
+    - compose_pause
+    - compose_kill
+    - compose_cp
+    - compose_top
+    - compose_wait
+    - compose_port
+    - compose_images
+    - compose_exec
+    - compose_run
+    - compose_start
+    - compose_stop
+    - compose_restart
+    - compose_pull
+    - compose_build
+    - compose_config
+    - compose_logs
+    - compose_ps
+    - compose_down
+    - compose_up
+  document-loader:
+    name: document-loader
+    transport: stdio
+    env:
+      FASTMCP_LOG_LEVEL: ERROR
+    args:
+    - awslabs.document-loader-mcp-server@latest
+    registry: false
+    command: uvx
+  engram:
+    name: engram
+    transport: stdio
+    args:
+    - mcp
+    - --tools=agent
+    - --project
+    - personal-configurations
+    registry: false
+    command: /home/pipas/.local/bin/engram
+    disabledTools:
+    - mem_delete
+    - mem_doctor
+    - mem_judge
+    - mem_compare
+    - mem_current_project
+  fetch:
+    name: fetch
+    transport: stdio
+    args:
+    - mcp-server-fetch
+    registry: false
+    command: uvx
+  github-personal:
+    name: github-personal
+    transport: stdio
+    env:
+      GITHUB_PERSONAL_ACCESS_TOKEN: ${GITHUB_PERSONAL_ACCESS_TOKEN}
+    args:
+    - run
+    - -i
+    - --rm
+    - -e
+    - GITHUB_PERSONAL_ACCESS_TOKEN
+    - ghcr.io/github/github-mcp-server
+    - stdio
+    registry: false
+    command: docker
+    disabledTools:
+    - add_issue_comment
+    - assign_copilot_to_issue
+    - create_branch
+    - create_or_update_file
+    - delete_file
+    - get_file_contents
+    - get_label
+    - get_latest_release
+    - get_release_by_tag
+    - get_team_members
+    - get_teams
+    - get_tag
+    - delete_repository
+    - create_repository
+    - fork_repository
+    - issue_read
+    - issue_write
+    - list_branches
+    - list_issue_fields
+    - list_issues
+    - list_issue_types
+    - list_releases
+    - list_repository_collaborators
+    - list_tags
+    - request_copilot_review
+    - search_issues
+    - sub_issue_write
+    - update_issue_comment
+    - search_commits
+    - search_code
+  linkedin:
+    name: linkedin
+    transport: stdio
+    env:
+      UV_HTTP_TIMEOUT: '300'
+    args:
+    - mcp-server-linkedin@latest
+    registry: false
+    command: uvx
+    disabled: true
+  office-mcp:
+    name: office-mcp
+    transport: stdio
+    env:
+      PYTHONUTF8: '1'
+      PYTHONIOENCODING: utf-8
+      OFFICE_MCP_DEFAULT_FOLDER: /home/pipas
+    args:
+    - /home/pipas/tools/office-mcp/server.py
+    registry: false
+    command: /home/pipas/tools/office-mcp/.venv/bin/python
+    disabled: true
+mcp_target_servers:
+  kiro:
+  - aws-mcp
+  - docker
+  - document-loader
+  - fetch
+  - github-personal
+  - linkedin
+  - office-mcp
+local_deployed_files:
+- .kiro/agents/code-reviewer.md
+- .kiro/agents/git-committer.md
+- .kiro/agents/study-helper.md
+- .kiro/agents/test-writer.md
+- .kiro/hooks/personal-configurations-engram-save-on-stop-stop-1.json
+- .kiro/skills/commit-workflow
+- .kiro/skills/commit-workflow/SKILL.md
+- .kiro/skills/commit-workflow/commits.md
+- .kiro/skills/commit-workflow/gitflow.md
+- .kiro/skills/create-pr
+- .kiro/skills/create-pr/SKILL.md
+- .kiro/skills/create-pr/pr-standards.md
+- .kiro/skills/generate-tests
+- .kiro/skills/generate-tests/SKILL.md
+- .kiro/skills/review-diff
+- .kiro/skills/review-diff/SKILL.md
+- .kiro/skills/setup-graphify
+- .kiro/skills/setup-graphify/SKILL.md
+- .kiro/steering/api-design.md
+- .kiro/steering/architecture.md
+- .kiro/steering/code-language.md
+- .kiro/steering/code-quality.md
+- .kiro/steering/concise-output.md
+- .kiro/steering/dependencies.md
+- .kiro/steering/document-loader-mcp.md
+- .kiro/steering/documentation.md
+- .kiro/steering/engram-memory.md
+- .kiro/steering/engram.md
+- .kiro/steering/error-handling.md
+- .kiro/steering/logging.md
+- .kiro/steering/naming-conventions.md
+- .kiro/steering/ponytail.md
+- .kiro/steering/prefer-mcp.md
+- .kiro/steering/security.md
+- .kiro/steering/testing-coverage.md
+- .kiro/steering/wsl-environment.md
+local_deployed_file_hashes:
+  .kiro/agents/code-reviewer.md: sha256:ebf16b515d07a865cf9670e4dcf3f097c2e3de009dd784602b2d4b6e3fe36dd5
+  .kiro/agents/git-committer.md: sha256:af8b011b69e5a352435c022ea8474f6ca6ddb0dd4cb65918fba4f3d890427b75
+  .kiro/agents/study-helper.md: sha256:38e843a0489d9bc3a6e68dd9e14ff3f9e88d63e2ccb871067ba18da8df369746
+  .kiro/agents/test-writer.md: sha256:5fc83fe9bdb738e6b3bbae9172b9e38ac25c12acf0627a263fd8a9fbfdf11571
+  .kiro/hooks/personal-configurations-engram-save-on-stop-stop-1.json: sha256:411ee49b956751a92f0f08e8cd0b7f21b3cb416e036ba99d6a9c3cbb213f8a6b
+  .kiro/skills/commit-workflow/SKILL.md: sha256:7857e4a0a1e299742106ed5ca1fef53b6ebf572a0e85e4107bf8aea41b6cc2e0
+  .kiro/skills/commit-workflow/commits.md: sha256:633300ed876e52aef3bfa10568652a59d973c2706395db9bd9922fdd5691dfd5
+  .kiro/skills/commit-workflow/gitflow.md: sha256:63373c089246093d3d944a8778e3ffaf35f4ee2d13c00176ee14c200250b2447
+  .kiro/skills/create-pr/SKILL.md: sha256:0a60349b87d7775679fda4fb63f4eb27bfc64ec2a6abf86ec075760c9e72149b
+  .kiro/skills/create-pr/pr-standards.md: sha256:67a6182cc77530e568471b33b3ac1bae8e3a53f01dda777d98c6bba892808345
+  .kiro/skills/generate-tests/SKILL.md: sha256:36fb6bd22dd7a0c1137573bbc791cdd3942b6c921891fe413881e76a1d4176e4
+  .kiro/skills/review-diff/SKILL.md: sha256:90fd7481cd064ab65d8f89a2d703e772d74f22ba3e1c0f9c4f51ee1c8ae833b0
+  .kiro/skills/setup-graphify/SKILL.md: sha256:aa86ec2aa6c2fac5e9914564e98f3bb180465080f5a653d2ec68432f1e01b157
+  .kiro/steering/api-design.md: sha256:f480babd04f710fa5f816f78cef542c0580397fbeb48bf0088ef62ef35bd0240
+  .kiro/steering/architecture.md: sha256:90ce797b61b58ae001a53e5585733c50f3699904953a9a19700c0ce4beb5a9e6
+  .kiro/steering/code-language.md: sha256:ed01dab998c195141f8542391d364b956a6a8afd97918a691d7f12cce026da60
+  .kiro/steering/code-quality.md: sha256:cbdb95ba5240e56ba818fd25c9aec5210bb9b6d91493f1d985909ef1e175e9c0
+  .kiro/steering/concise-output.md: sha256:435d958a1255bf76c6c72f9f9018c4c9b1933c3df1fd572c3e29925f8fc1dabe
+  .kiro/steering/dependencies.md: sha256:5b1eeedef322ea5862ad4d321b66b99ca88a97436bc202a88be36109b7f4477d
+  .kiro/steering/document-loader-mcp.md: sha256:f878956bfeb5834ccf43d46761b695c518d6370a4dbd0ac1f3b50ddb63c54fde
+  .kiro/steering/documentation.md: sha256:f9d4ee2c8b7b70d027ea5cc9fb18ad6bde3024d74b37b28d5b55fec31bb3da93
+  .kiro/steering/engram-memory.md: sha256:05b21949ac721b3c3f17cd803a87edcd2735a36bd6b111d5b27be1dc4284b09b
+  .kiro/steering/engram.md: sha256:74734b4204837bfb64f78e18851b9ab89ebf99ccc1c745553b580e41b9664bfc
+  .kiro/steering/error-handling.md: sha256:e772807bb2aecb4658ba16e9f19f22a5e0a7516d1467efa03cdfd3a93e3a9068
+  .kiro/steering/logging.md: sha256:534a5b36f60d35da8372910fd89890f72ad11e0e2b3ecc10a333620d941950eb
+  .kiro/steering/naming-conventions.md: sha256:08361cf1d1736cf2d6eb60f7b62910501c843e2b3a640deeb4a3f48d72f1ee22
+  .kiro/steering/ponytail.md: sha256:84bb7db7d7eb2bc2968f7813abc10857d9773a1ca18c5a1cc0647b3b140f21db
+  .kiro/steering/prefer-mcp.md: sha256:0fb5fae5bb7b8f57605c1a80f397987e54a9b52454302fedddba6500db921bf4
+  .kiro/steering/security.md: sha256:18d0853b7ec92e04efe30cc4ab8e623a060decb6af86190b5bfaad75ea0bba6e
+  .kiro/steering/testing-coverage.md: sha256:5c9417d4caf5f6954bdde9f68ef6a1654ecdbfa2b6510a31a249bdea11889390
+  .kiro/steering/wsl-environment.md: sha256:613304fb3f64493923ff7da2bc0e543e5e806ca0476e2a52ad196bd588272e4f
