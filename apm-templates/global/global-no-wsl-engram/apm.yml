@@ -10,7 +10,7 @@
 # travel only with a whole-package pull. To get the engram hook in a consumer,
 # copy it manually after install:
 #   mkdir -p .apm/hooks
-#   cp <path-to>/.apm/hooks/engram-save-on-stop.json .apm/hooks/
+#   cp engram-save-on-stop.json .apm/hooks/   # shipped alongside this manifest
 #   apm install   # re-run so the hook is integrated into each harness
 # (Or pull the whole package instead of this curated manifest — see full.apm.yml.)
 #
@@ -40,12 +40,12 @@ dependencies:
         # engram instructions
         - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/engram.instructions.md
         - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/engram-memory.instructions.md
-        # Skill primitives — owner/repo/skills/<name> subpath form
-        - JuanFelipeRestrepoBuitrago/Linux/skills/commit-workflow
-        - JuanFelipeRestrepoBuitrago/Linux/skills/create-pr
-        - JuanFelipeRestrepoBuitrago/Linux/skills/generate-tests
-        - JuanFelipeRestrepoBuitrago/Linux/skills/review-diff
-        - JuanFelipeRestrepoBuitrago/Linux/skills/setup-graphify
+        # Skill primitives — owner/repo/.apm/skills/<name> subpath form
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/skills/commit-workflow
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/skills/create-pr
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/skills/generate-tests
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/skills/review-diff
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/skills/setup-graphify
         # Agent primitives — single-file refs end in .agent.md
         - JuanFelipeRestrepoBuitrago/Linux/.apm/agents/study-helper.agent.md
     mcp:

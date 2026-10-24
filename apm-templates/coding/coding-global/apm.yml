@@ -38,11 +38,11 @@ dependencies:
         - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/pr-standards.instructions.md
         - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/wsl-environment.instructions.md
         # Skills
-        - JuanFelipeRestrepoBuitrago/Linux/skills/commit-workflow
-        - JuanFelipeRestrepoBuitrago/Linux/skills/create-pr
-        - JuanFelipeRestrepoBuitrago/Linux/skills/generate-tests
-        - JuanFelipeRestrepoBuitrago/Linux/skills/review-diff
-        - JuanFelipeRestrepoBuitrago/Linux/skills/setup-graphify
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/skills/commit-workflow
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/skills/create-pr
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/skills/generate-tests
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/skills/review-diff
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/skills/setup-graphify
         # Agent
         - JuanFelipeRestrepoBuitrago/Linux/.apm/agents/study-helper.agent.md
     mcp:

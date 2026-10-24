@@ -97,8 +97,8 @@ dir (e.g. `~/.kiro/steering/`), applying across projects. It does **not** touch 
 workspace `.kiro/`.
 
 ```sh
-mkdir -p /tmp/global-install && cp apm.yml /tmp/global-install/apm.yml
-cd /tmp/global-install && apm install --global
+cp apm.yml ~/.apm/apm.yml
+cd ~/.apm && apm install --global
 ```
 
 ### Install only part of it

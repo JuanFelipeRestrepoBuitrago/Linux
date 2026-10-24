@@ -7,10 +7,10 @@ alongside it.
 
 ## What it installs
 
-| Kind         | Items                                                                                                                       |
-| ------------ | --------------------------------------------------------------------------------------------------------------------------- |
+| Kind         | Items                                                                                                                                                     |
+| ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Instructions | api-design, architecture, code-quality, dependencies, documentation, error-handling, logging, naming-conventions, testing-coverage, engram, engram-memory |
-| MCP servers  | `engram` (stdio)                                                                                                            |
+| MCP servers  | `engram` (stdio)                                                                                                                                          |
 
 ## The engram hook needs a manual copy
 
@@ -20,7 +20,7 @@ re-install:
 
 ```sh
 mkdir -p .apm/hooks
-cp /path/to/Linux/.apm/hooks/engram-save-on-stop.json .apm/hooks/
+cp engram-save-on-stop.json .apm/hooks/
 apm install
 ```
 

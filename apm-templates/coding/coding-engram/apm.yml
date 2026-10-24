@@ -8,7 +8,7 @@
 # travel only with a whole-package pull. To get the engram hook in a consumer,
 # copy it manually after install:
 #   mkdir -p .apm/hooks
-#   cp <path-to>/.apm/hooks/engram-save-on-stop.json .apm/hooks/
+#   cp engram-save-on-stop.json .apm/hooks/   # shipped alongside this manifest
 #   apm install   # re-run so the hook is integrated into each harness
 #
 # Prerequisites and env vars: see README.md in this folder. engram needs the

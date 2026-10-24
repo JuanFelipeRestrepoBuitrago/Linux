@@ -10,13 +10,13 @@ Variant note: full coding + global, **minus** `wsl-environment`. Under WSL use
 
 ## What it installs
 
-| Kind         | Items                                                                                              |
-| ------------ | -------------------------------------------------------------------------------------------------- |
+| Kind         | Items                                                                                                                              |
+| ------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
 | Coding       | api-design, architecture, code-quality, dependencies, documentation, error-handling, logging, naming-conventions, testing-coverage |
-| Global instr | code-language, commits, concise-output, document-loader-mcp, gitflow, ponytail, prefer-mcp, security |
-| Skills       | commit-workflow, create-pr, generate-tests, review-diff, setup-graphify                            |
-| Agent        | study-helper                                                                                       |
-| MCP servers  | `github` (remote http), `document-loader` (stdio), `fetch` (stdio)                                 |
+| Global instr | code-language, commits, concise-output, document-loader-mcp, gitflow, ponytail, prefer-mcp, security                               |
+| Skills       | commit-workflow, create-pr, generate-tests, review-diff, setup-graphify                                                            |
+| Agent        | study-helper                                                                                                                       |
+| MCP servers  | `github` (remote http), `document-loader` (stdio), `fetch` (stdio)                                                                 |
 
 ## Prerequisites
 
@@ -71,8 +71,8 @@ apm install
 Globally (user scope, across projects; not the workspace `.kiro/`):
 
 ```sh
-mkdir -p /tmp/coding-install && cp apm.yml /tmp/coding-install/apm.yml
-cd /tmp/coding-install && apm install --global
+cp apm.yml ~/.apm/apm.yml
+cd ~/.apm && apm install --global
 ```
 
 Install only part of it: `apm install --only apm` (instructions + skills + agent) or

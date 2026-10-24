@@ -26,7 +26,7 @@ and re-install:
 
 ```sh
 mkdir -p .apm/hooks
-cp /path/to/Linux/.apm/hooks/engram-save-on-stop.json .apm/hooks/
+cp engram-save-on-stop.json .apm/hooks/
 apm install
 ```
 
@@ -116,8 +116,8 @@ apm install
 dir, applying across projects. It does **not** touch any workspace `.kiro/`.
 
 ```sh
-mkdir -p /tmp/global-install && cp apm.yml /tmp/global-install/apm.yml
-cd /tmp/global-install && apm install --global
+cp apm.yml ~/.apm/apm.yml
+cd ~/.apm && apm install --global
 ```
 
 ### Install only part of it

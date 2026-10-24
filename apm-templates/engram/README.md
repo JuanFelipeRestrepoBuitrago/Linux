@@ -5,10 +5,10 @@ Engram persistent memory, standalone: the `engram` and `engram-memory` instructi
 
 ## What it installs
 
-| Kind         | Items                       |
-| ------------ | --------------------------- |
-| Instructions | engram, engram-memory       |
-| MCP servers  | `engram` (stdio)            |
+| Kind         | Items                 |
+| ------------ | --------------------- |
+| Instructions | engram, engram-memory |
+| MCP servers  | `engram` (stdio)      |
 
 ## The engram hook needs a manual copy
 
@@ -18,7 +18,7 @@ re-install:
 
 ```sh
 mkdir -p .apm/hooks
-cp /path/to/Linux/.apm/hooks/engram-save-on-stop.json .apm/hooks/
+cp engram-save-on-stop.json .apm/hooks/
 apm install
 ```
 
