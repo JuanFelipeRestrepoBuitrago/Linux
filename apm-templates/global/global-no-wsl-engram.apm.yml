@@ -1,0 +1,123 @@
+# global-no-wsl-engram.apm.yml — global APM consumer manifest (no WSL + engram)
+#
+# Like global-no-wsl.apm.yml (no wsl-environment instruction) PLUS engram:
+#   - engram instructions: engram, engram-memory (single-file refs)
+#   - engram MCP server (copied from apm-templates/mcps/mcps.apm.yml)
+# For native Linux/macOS where the WSL guidance doesn't apply.
+#
+# HOOK CAVEAT — engram-save-on-stop.json is NOT installable via a dependency ref.
+# APM single-file refs only cover .instructions.md / .agent.md / .prompt.md; hooks
+# travel only with a whole-package pull. To get the engram hook in a consumer,
+# copy it manually after install:
+#   mkdir -p .apm/hooks
+#   cp <path-to>/.apm/hooks/engram-save-on-stop.json .apm/hooks/
+#   apm install   # re-run so the hook is integrated into each harness
+# (Or pull the whole package instead of this curated manifest — see full.apm.yml.)
+#
+# Prerequisites and env vars: see README.md in this folder. engram additionally
+# needs the engram CLI at ~/.local/bin/engram and DEFAULT_ENGRAM_PROJECT exported.
+#
+# Usage: copy in as apm.yml, then:  apm install   (add --global for user scope)
+name: global-no-wsl-engram-consumer
+version: 0.1.0
+description: Curated global config without WSL, plus engram instructions and MCP server (hook added manually — see header).
+targets:
+    - kiro
+    - claude
+    - codex
+dependencies:
+    apm:
+        # Instruction primitives — single-file refs end in .instructions.md
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/code-language.instructions.md
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/commits.instructions.md
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/concise-output.instructions.md
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/document-loader-mcp.instructions.md
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/gitflow.instructions.md
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/ponytail.instructions.md
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/prefer-mcp.instructions.md
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/security.instructions.md
+        # engram instructions
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/engram.instructions.md
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/engram-memory.instructions.md
+        # Skill primitives — owner/repo/skills/<name> subpath form
+        - JuanFelipeRestrepoBuitrago/Linux/skills/commit-workflow
+        - JuanFelipeRestrepoBuitrago/Linux/skills/create-pr
+        - JuanFelipeRestrepoBuitrago/Linux/skills/generate-tests
+        - JuanFelipeRestrepoBuitrago/Linux/skills/review-diff
+        - JuanFelipeRestrepoBuitrago/Linux/skills/setup-graphify
+        # Agent primitives — single-file refs end in .agent.md
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/agents/study-helper.agent.md
+    mcp:
+        # github — remote HTTP (GitHub Copilot MCP). Token via ${VAR}, enabled.
+        - name: github
+          registry: false
+          transport: http
+          url: https://api.githubcopilot.com/mcp/
+          headers:
+              Authorization: Bearer ${GITHUB_PERSONAL_ACCESS_TOKEN}
+          disabledTools:
+              - add_issue_comment
+              - assign_copilot_to_issue
+              - create_branch
+              - create_or_update_file
+              - delete_file
+              - get_file_contents
+              - get_label
+              - get_latest_release
+              - get_release_by_tag
+              - get_team_members
+              - get_teams
+              - get_tag
+              - delete_repository
+              - create_repository
+              - fork_repository
+              - issue_read
+              - issue_write
+              - list_branches
+              - list_issue_fields
+              - list_issues
+              - list_issue_types
+              - list_releases
+              - list_repository_collaborators
+              - list_tags
+              - request_copilot_review
+              - search_issues
+              - sub_issue_write
+              - update_issue_comment
+              - search_commits
+              - search_code
+
+        # document-loader — stdio, enabled.
+        - name: document-loader
+          registry: false
+          transport: stdio
+          command: uvx
+          args:
+              - awslabs.document-loader-mcp-server@latest
+          env:
+              FASTMCP_LOG_LEVEL: ERROR
+
+        # fetch — stdio, enabled.
+        - name: fetch
+          registry: false
+          transport: stdio
+          command: uvx
+          args:
+              - mcp-server-fetch
+
+        # engram — stdio, enabled. Project via ${DEFAULT_ENGRAM_PROJECT}.
+        - name: engram
+          registry: false
+          transport: stdio
+          command: engram
+          args:
+              - mcp
+              - --tools=agent
+              - --project
+              - ${DEFAULT_ENGRAM_PROJECT}
+          disabledTools:
+              - mem_delete
+              - mem_doctor
+              - mem_judge
+              - mem_compare
+              - mem_current_project

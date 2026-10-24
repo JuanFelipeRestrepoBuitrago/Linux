@@ -23,7 +23,7 @@ mcp_configs:
     - --project
     - personal-configurations
     registry: false
-    command: ${HOME}/.local/bin/engram
+    command: engram
     disabledTools:
     - mem_delete
     - mem_doctor
