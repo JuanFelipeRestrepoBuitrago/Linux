@@ -1,0 +1,104 @@
+# coding-global/apm.yml — coding standards + full global config (with WSL)
+#
+# The 9 coding-standard instructions PLUS everything in the global variant:
+# global instructions (incl. wsl-environment), 5 skills, the study-helper agent,
+# and 3 MCP servers (github, document-loader, fetch).
+#
+# Prerequisites and env vars: see README.md in this folder.
+#
+# Usage: copy in as apm.yml, then:  apm install   (add --global for user scope)
+name: coding-global-consumer
+version: 0.1.0
+description: Coding standards plus the full global config (instructions incl. WSL, skills, agent, github/document-loader/fetch MCP).
+targets:
+    - kiro
+    - claude
+    - codex
+dependencies:
+    apm:
+        # Coding-standard instructions
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/api-design.instructions.md
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/architecture.instructions.md
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/code-quality.instructions.md
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/dependencies.instructions.md
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/documentation.instructions.md
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/error-handling.instructions.md
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/logging.instructions.md
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/naming-conventions.instructions.md
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/testing-coverage.instructions.md
+        # Global instructions (incl. wsl-environment)
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/code-language.instructions.md
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/commits.instructions.md
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/concise-output.instructions.md
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/document-loader-mcp.instructions.md
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/gitflow.instructions.md
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/ponytail.instructions.md
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/prefer-mcp.instructions.md
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/security.instructions.md
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/pr-standards.instructions.md
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/wsl-environment.instructions.md
+        # Skills
+        - JuanFelipeRestrepoBuitrago/Linux/skills/commit-workflow
+        - JuanFelipeRestrepoBuitrago/Linux/skills/create-pr
+        - JuanFelipeRestrepoBuitrago/Linux/skills/generate-tests
+        - JuanFelipeRestrepoBuitrago/Linux/skills/review-diff
+        - JuanFelipeRestrepoBuitrago/Linux/skills/setup-graphify
+        # Agent
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/agents/study-helper.agent.md
+    mcp:
+        # github — remote HTTP (GitHub Copilot MCP). Token via ${VAR}, enabled.
+        - name: github
+          registry: false
+          transport: http
+          url: https://api.githubcopilot.com/mcp/
+          headers:
+              Authorization: Bearer ${GITHUB_PERSONAL_ACCESS_TOKEN}
+          disabledTools:
+              - add_issue_comment
+              - assign_copilot_to_issue
+              - create_branch
+              - create_or_update_file
+              - delete_file
+              - get_file_contents
+              - get_label
+              - get_latest_release
+              - get_release_by_tag
+              - get_team_members
+              - get_teams
+              - get_tag
+              - delete_repository
+              - create_repository
+              - fork_repository
+              - issue_read
+              - issue_write
+              - list_branches
+              - list_issue_fields
+              - list_issues
+              - list_issue_types
+              - list_releases
+              - list_repository_collaborators
+              - list_tags
+              - request_copilot_review
+              - search_issues
+              - sub_issue_write
+              - update_issue_comment
+              - search_commits
+              - search_code
+
+        # document-loader — stdio, enabled.
+        - name: document-loader
+          registry: false
+          transport: stdio
+          command: uvx
+          args:
+              - awslabs.document-loader-mcp-server@latest
+          env:
+              FASTMCP_LOG_LEVEL: ERROR
+
+        # fetch — stdio, enabled.
+        - name: fetch
+          registry: false
+          transport: stdio
+          command: uvx
+          args:
+              - mcp-server-fetch

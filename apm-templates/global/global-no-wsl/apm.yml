@@ -34,6 +34,7 @@ dependencies:
         - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/ponytail.instructions.md
         - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/prefer-mcp.instructions.md
         - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/security.instructions.md
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/pr-standards.instructions.md
         # Skill primitives — owner/repo/skills/<name> subpath form
         - JuanFelipeRestrepoBuitrago/Linux/skills/commit-workflow
         - JuanFelipeRestrepoBuitrago/Linux/skills/create-pr

@@ -1,0 +1,101 @@
+# global.apm.yml — global APM consumer manifest
+#
+# Pulls a curated global config from JuanFelipeRestrepoBuitrago/Linux:
+#   - instructions (single-file refs): code-language, commits, concise-output,
+#       document-loader-mcp, gitflow, ponytail, prefer-mcp, security, wsl-environment
+#   - skills (subpath refs): commit-workflow, create-pr, generate-tests,
+#       review-diff, setup-graphify
+#   - agents (single-file refs): study-helper
+#   - MCP servers: github (remote http), document-loader (stdio), fetch (stdio)
+#
+# Prerequisites and env vars: see README.md in this folder.
+#
+# Usage: install globally (user scope ~/.apm/) so it applies across projects:
+#   apm install --global
+# Or drop into a project as its apm.yml and run:
+#   apm install
+name: global-consumer
+version: 0.1.0
+description: Curated global config — core instructions, workflow skills, and github/document-loader/fetch MCP servers.
+targets:
+    - kiro
+    - claude
+    - codex
+dependencies:
+    apm:
+        # Instruction primitives — single-file refs end in .instructions.md
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/code-language.instructions.md
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/commits.instructions.md
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/concise-output.instructions.md
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/document-loader-mcp.instructions.md
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/gitflow.instructions.md
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/ponytail.instructions.md
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/prefer-mcp.instructions.md
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/security.instructions.md
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/pr-standards.instructions.md
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/wsl-environment.instructions.md
+        # Skill primitives — owner/repo/skills/<name> subpath form
+        - JuanFelipeRestrepoBuitrago/Linux/skills/commit-workflow
+        - JuanFelipeRestrepoBuitrago/Linux/skills/create-pr
+        - JuanFelipeRestrepoBuitrago/Linux/skills/generate-tests
+        - JuanFelipeRestrepoBuitrago/Linux/skills/review-diff
+        - JuanFelipeRestrepoBuitrago/Linux/skills/setup-graphify
+        # Agent primitives — single-file refs end in .agent.md
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/agents/study-helper.agent.md
+    mcp:
+        # github — remote HTTP (GitHub Copilot MCP). Token via ${VAR}, enabled.
+        - name: github
+          registry: false
+          transport: http
+          url: https://api.githubcopilot.com/mcp/
+          headers:
+              Authorization: Bearer ${GITHUB_PERSONAL_ACCESS_TOKEN}
+          disabledTools:
+              - add_issue_comment
+              - assign_copilot_to_issue
+              - create_branch
+              - create_or_update_file
+              - delete_file
+              - get_file_contents
+              - get_label
+              - get_latest_release
+              - get_release_by_tag
+              - get_team_members
+              - get_teams
+              - get_tag
+              - delete_repository
+              - create_repository
+              - fork_repository
+              - issue_read
+              - issue_write
+              - list_branches
+              - list_issue_fields
+              - list_issues
+              - list_issue_types
+              - list_releases
+              - list_repository_collaborators
+              - list_tags
+              - request_copilot_review
+              - search_issues
+              - sub_issue_write
+              - update_issue_comment
+              - search_commits
+              - search_code
+
+        # document-loader — stdio, enabled.
+        - name: document-loader
+          registry: false
+          transport: stdio
+          command: uvx
+          args:
+              - awslabs.document-loader-mcp-server@latest
+          env:
+              FASTMCP_LOG_LEVEL: ERROR
+
+        # fetch — stdio, enabled.
+        - name: fetch
+          registry: false
+          transport: stdio
+          command: uvx
+          args:
+              - mcp-server-fetch

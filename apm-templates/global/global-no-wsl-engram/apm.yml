@@ -36,6 +36,7 @@ dependencies:
         - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/ponytail.instructions.md
         - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/prefer-mcp.instructions.md
         - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/security.instructions.md
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/pr-standards.instructions.md
         # engram instructions
         - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/engram.instructions.md
         - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/engram-memory.instructions.md

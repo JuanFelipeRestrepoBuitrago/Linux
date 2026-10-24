@@ -1,0 +1,46 @@
+# engram/apm.yml — engram only
+#
+# Engram persistent memory, standalone: the engram + engram-memory instructions
+# and the engram MCP server. No coding standards, global config, skills, or agent.
+#
+# HOOK CAVEAT — engram-save-on-stop.json is NOT installable via a dependency ref.
+# APM single-file refs only cover .instructions.md / .agent.md / .prompt.md; hooks
+# travel only with a whole-package pull. To get the engram hook in a consumer,
+# copy it manually after install:
+#   mkdir -p .apm/hooks
+#   cp <path-to>/.apm/hooks/engram-save-on-stop.json .apm/hooks/
+#   apm install   # re-run so the hook is integrated into each harness
+#
+# Prerequisites and env vars: see README.md in this folder. engram needs the
+# engram CLI on PATH and DEFAULT_ENGRAM_PROJECT exported.
+#
+# Usage: copy in as apm.yml, then:  apm install   (add --global for user scope)
+name: engram-consumer
+version: 0.1.0
+description: Engram instructions and MCP server (hook added manually — see header).
+targets:
+    - kiro
+    - claude
+    - codex
+dependencies:
+    apm:
+        # engram instructions
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/engram.instructions.md
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/engram-memory.instructions.md
+    mcp:
+        # engram — stdio, enabled. Project via ${DEFAULT_ENGRAM_PROJECT}.
+        - name: engram
+          registry: false
+          transport: stdio
+          command: engram
+          args:
+              - mcp
+              - --tools=agent
+              - --project
+              - ${DEFAULT_ENGRAM_PROJECT}
+          disabledTools:
+              - mem_delete
+              - mem_doctor
+              - mem_judge
+              - mem_compare
+              - mem_current_project

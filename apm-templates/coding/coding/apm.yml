@@ -1,0 +1,27 @@
+# coding/apm.yml — coding-standards APM consumer manifest (base)
+#
+# The 9 coding-standard instructions only. No skills, agent, or MCP servers.
+# Combine with a global variant (see ../coding-global*) for the full setup.
+#
+# Prerequisites: see README.md in this folder.
+#
+# Usage: copy in as apm.yml, then:  apm install   (add --global for user scope)
+name: coding-consumer
+version: 0.1.0
+description: Coding standards — api-design, architecture, code-quality, dependencies, documentation, error-handling, logging, naming-conventions, testing-coverage.
+targets:
+    - kiro
+    - claude
+    - codex
+dependencies:
+    apm:
+        # Coding-standard instructions — single-file refs end in .instructions.md
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/api-design.instructions.md
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/architecture.instructions.md
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/code-quality.instructions.md
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/dependencies.instructions.md
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/documentation.instructions.md
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/error-handling.instructions.md
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/logging.instructions.md
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/naming-conventions.instructions.md
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/testing-coverage.instructions.md
