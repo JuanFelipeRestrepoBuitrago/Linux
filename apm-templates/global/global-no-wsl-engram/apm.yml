@@ -46,6 +46,8 @@ dependencies:
         - JuanFelipeRestrepoBuitrago/Linux/.apm/skills/generate-tests
         - JuanFelipeRestrepoBuitrago/Linux/.apm/skills/review-diff
         - JuanFelipeRestrepoBuitrago/Linux/.apm/skills/setup-graphify
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/skills/apm-dependencies
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/skills/apm-config-generator
         # Agent primitives — single-file refs end in .agent.md
         - JuanFelipeRestrepoBuitrago/Linux/.apm/agents/study-helper.agent.md
     mcp:

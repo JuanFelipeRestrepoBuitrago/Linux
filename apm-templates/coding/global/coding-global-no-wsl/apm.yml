@@ -1,25 +1,15 @@
-# coding-global-engram/apm.yml — coding standards + full global config + engram (with WSL)
+# coding-global-no-wsl/apm.yml — coding standards + full global config (no WSL)
 #
-# The 9 coding-standard instructions PLUS the global-engram variant: global
-# instructions (incl. wsl-environment), the engram + engram-memory instructions,
-# 5 skills, the study-helper agent, and 4 MCP servers (github, document-loader,
-# fetch, engram).
+# The 9 coding-standard instructions PLUS the global-no-wsl variant: global
+# instructions WITHOUT wsl-environment, 5 skills, the study-helper agent, and
+# 3 MCP servers (github, document-loader, fetch). For native Linux/macOS.
 #
-# HOOK CAVEAT — engram-save-on-stop.json is NOT installable via a dependency ref.
-# APM single-file refs only cover .instructions.md / .agent.md / .prompt.md; hooks
-# travel only with a whole-package pull. To get the engram hook in a consumer,
-# copy it manually after install:
-#   mkdir -p .apm/hooks
-#   cp engram-save-on-stop.json .apm/hooks/   # shipped alongside this manifest
-#   apm install
-#
-# Prerequisites and env vars: see README.md in this folder. engram needs the
-# engram CLI on PATH and DEFAULT_ENGRAM_PROJECT exported.
+# Prerequisites and env vars: see README.md in this folder.
 #
 # Usage: copy in as apm.yml, then:  apm install   (add --global for user scope)
-name: coding-global-engram-consumer
+name: coding-global-no-wsl-consumer
 version: 0.1.0
-description: Coding standards plus the full global config with WSL and engram (instructions, skills, agent, github/document-loader/fetch/engram MCP; hook added manually).
+description: Coding standards plus the global config without WSL (instructions, skills, agent, github/document-loader/fetch MCP).
 targets:
     - kiro
     - claude
@@ -36,7 +26,7 @@ dependencies:
         - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/logging.instructions.md
         - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/naming-conventions.instructions.md
         - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/testing-coverage.instructions.md
-        # Global instructions (incl. wsl-environment)
+        # Global instructions (no wsl-environment)
         - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/code-language.instructions.md
         - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/commits.instructions.md
         - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/concise-output.instructions.md
@@ -46,16 +36,14 @@ dependencies:
         - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/prefer-mcp.instructions.md
         - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/security.instructions.md
         - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/pr-standards.instructions.md
-        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/wsl-environment.instructions.md
-        # engram instructions
-        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/engram.instructions.md
-        - JuanFelipeRestrepoBuitrago/Linux/.apm/instructions/engram-memory.instructions.md
         # Skills
         - JuanFelipeRestrepoBuitrago/Linux/.apm/skills/commit-workflow
         - JuanFelipeRestrepoBuitrago/Linux/.apm/skills/create-pr
         - JuanFelipeRestrepoBuitrago/Linux/.apm/skills/generate-tests
         - JuanFelipeRestrepoBuitrago/Linux/.apm/skills/review-diff
         - JuanFelipeRestrepoBuitrago/Linux/.apm/skills/setup-graphify
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/skills/apm-dependencies
+        - JuanFelipeRestrepoBuitrago/Linux/.apm/skills/apm-config-generator
         # Agent
         - JuanFelipeRestrepoBuitrago/Linux/.apm/agents/study-helper.agent.md
     mcp:
@@ -115,20 +103,3 @@ dependencies:
           command: uvx
           args:
               - mcp-server-fetch
-
-        # engram — stdio, enabled. Project via ${DEFAULT_ENGRAM_PROJECT}.
-        - name: engram
-          registry: false
-          transport: stdio
-          command: engram
-          args:
-              - mcp
-              - --tools=agent
-              - --project
-              - ${DEFAULT_ENGRAM_PROJECT}
-          disabledTools:
-              - mem_delete
-              - mem_doctor
-              - mem_judge
-              - mem_compare
-              - mem_current_project
