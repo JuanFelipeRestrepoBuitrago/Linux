@@ -3,6 +3,10 @@
 AWS skills and the AWS MCP Server for your AI coding agents, installed with the **AWS CLI Agent
 Toolkit** — not through APM.
 
+Works on Linux (bash/zsh), macOS, WSL, and Windows. The `aws` commands below are identical on
+every OS; only the config paths differ — `~/.kiro/` on Linux/macOS/WSL maps to
+`%USERPROFILE%\.kiro\` on Windows.
+
 This template is **README-only on purpose**. APM carries single-file instruction/agent/prompt refs
 and inline MCP declarations; it does not own multi-file skill directories or the AWS MCP wiring. The
 AWS CLI already installs and updates both, globally, into each detected agent's config directory
@@ -12,10 +16,10 @@ template just documents it.
 
 ## What the toolkit installs
 
-| Kind        | Where                                              | Owner        |
-| ----------- | -------------------------------------------------- | ------------ |
-| AWS skills  | `~/.kiro/skills/` (e.g. `aws-cdk`, `aws-serverless`) | AWS CLI      |
-| AWS MCP server | `~/.kiro/settings/mcp.json`                     | AWS CLI      |
+| Kind           | Where                                                | Owner   |
+| -------------- | ---------------------------------------------------- | ------- |
+| AWS skills     | `~/.kiro/skills/` (e.g. `aws-cdk`, `aws-serverless`) | AWS CLI |
+| AWS MCP server | `~/.kiro/settings/mcp.json`                          | AWS CLI |
 
 Skills are installed **globally** in the agent's config directory, not per project.
 

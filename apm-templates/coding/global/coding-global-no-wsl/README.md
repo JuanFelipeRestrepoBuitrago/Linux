@@ -2,8 +2,11 @@
 
 Coding standards **plus the global config without WSL**: the 9 coding instructions on top of
 global-no-wsl's 8 instructions, 5 skills, the study-helper agent, and 3 MCP servers — for
-native Linux/macOS. The shared `../permissions.yaml` is a permissive Kiro permission set you
-can copy alongside it.
+native Linux, macOS, or Windows. The shared `../permissions.yaml` is a permissive Kiro
+permission set you can copy alongside it.
+
+Works on Linux (bash/zsh), macOS, and Windows (PowerShell) — install/env commands below are
+given per OS.
 
 Variant note: full coding + global, **minus** `wsl-environment`. Under WSL use
 `../coding-global`. For engram, use `../coding-global-no-wsl-engram`.
@@ -23,7 +26,15 @@ Variant note: full coding + global, **minus** `wsl-environment`. Under WSL use
 ### 1. APM CLI
 
 ```sh
+# macOS (Homebrew)
+brew install apm
+# Linux / macOS / WSL (no Homebrew)
 curl -sSL https://aka.ms/apm-unix | sh
+```
+
+```powershell
+# Windows (PowerShell)
+irm https://aka.ms/apm-windows | iex
 ```
 
 Verify: `apm --version`.
@@ -31,7 +42,13 @@ Verify: `apm --version`.
 ### 2. uv / uvx (document-loader, fetch)
 
 ```sh
+# Linux / macOS / WSL
 curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+```powershell
+# Windows (PowerShell)
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
 ```
 
 See https://docs.astral.sh/uv/getting-started/installation/. Server packages are fetched by
@@ -43,7 +60,10 @@ The `github` server needs `GITHUB_PERSONAL_ACCESS_TOKEN` (see Environment variab
 
 ### 4. document-loader extras (optional)
 
-`extract_slides_as_images` additionally needs `sudo apt install -y libreoffice poppler-utils`.
+`extract_slides_as_images` additionally needs LibreOffice + poppler-utils:
+`sudo apt install -y libreoffice poppler-utils` (Debian/Ubuntu/WSL),
+`brew install --cask libreoffice && brew install poppler` (macOS), or
+`winget install TheDocumentFoundation.LibreOffice` + `choco install poppler` (Windows).
 
 ### 5. Graphify CLI (setup-graphify skill, optional)
 
@@ -58,15 +78,31 @@ PyPI package `graphifyy` (double-y), command `graphify`, Python 3.10+:
 | `FASTMCP_LOG_LEVEL`            | `document-loader` | Log level for the document-loader server. Optional tuning; recommended `ERROR`. |
 
 ```sh
+# Linux / macOS / WSL
 export GITHUB_PERSONAL_ACCESS_TOKEN=ghp_...   # or pull from a secret manager
 export FASTMCP_LOG_LEVEL=ERROR                # optional; DEBUG/INFO/WARNING/ERROR
+```
+
+```powershell
+# Windows (PowerShell) — current session
+$env:GITHUB_PERSONAL_ACCESS_TOKEN = "ghp_..."
+$env:FASTMCP_LOG_LEVEL = "ERROR"
+# persist across sessions: setx GITHUB_PERSONAL_ACCESS_TOKEN "ghp_..."
 ```
 
 ## Install
 
 ```sh
+# Linux / macOS / WSL
 cp apm.yml /path/to/project/apm.yml      # optionally also copy ../permissions.yaml
 cd /path/to/project
+apm install
+```
+
+```powershell
+# Windows (PowerShell)
+Copy-Item apm.yml C:\path\to\project\apm.yml
+cd C:\path\to\project
 apm install
 ```
 

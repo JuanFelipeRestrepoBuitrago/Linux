@@ -5,6 +5,10 @@ dependencies. APM writes each server's launch command into the harness MCP confi
 it does **not** install the programs those commands invoke. Install the prerequisites
 for the servers you use, export the required environment variables, then install.
 
+Works on Linux (bash/zsh), macOS, WSL, and Windows (PowerShell) — prerequisite/env commands
+below are given per OS. The default `command`/`args` paths in `mcps.apm.yml` use
+Linux/macOS-style paths; on Windows adjust them (see office-mcp below).
+
 ## Install
 
 ```sh
@@ -35,7 +39,13 @@ Enable one by removing its `disabled: true` line.
 `uvx` ships with `uv`. Install:
 
 ```sh
+# Linux / macOS / WSL
 curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+```powershell
+# Windows (PowerShell)
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
 ```
 
 See https://docs.astral.sh/uv/getting-started/installation/. The server packages
@@ -52,21 +62,30 @@ The `github` server here is remote HTTP and needs **no** Docker.
 
 ### office-mcp
 
-The launch command runs `~/tools/office-mcp/.venv/bin/python ~/tools/office-mcp/server.py`.
-Provide that layout:
+The launch command runs `~/tools/office-mcp/.venv/bin/python ~/tools/office-mcp/server.py`
+(on Windows, `%USERPROFILE%\tools\office-mcp\.venv\Scripts\python.exe`). Provide that layout:
 
 ```sh
+# Linux / macOS / WSL
 git clone <office-mcp-repo> ~/tools/office-mcp
 python3 -m venv ~/tools/office-mcp/.venv
 ~/tools/office-mcp/.venv/bin/pip install -r ~/tools/office-mcp/requirements.txt
 ```
 
-Install it elsewhere? Update the `command`/`args` paths in `mcps.apm.yml`.
+```powershell
+# Windows (PowerShell)
+git clone <office-mcp-repo> "$env:USERPROFILE\tools\office-mcp"
+python -m venv "$env:USERPROFILE\tools\office-mcp\.venv"
+& "$env:USERPROFILE\tools\office-mcp\.venv\Scripts\pip.exe" install -r "$env:USERPROFILE\tools\office-mcp\requirements.txt"
+```
+
+Install it elsewhere, or on Windows? Update the `command`/`args` paths in `mcps.apm.yml`
+accordingly (the defaults use Linux/macOS-style paths).
 
 ### engram
 
-The launch command runs `~/.local/bin/engram`. Install the Engram CLI so that binary
-exists on that path.
+The launch command runs `~/.local/bin/engram` (on Windows, the `engram` binary must be on
+`%PATH%`). Install the Engram CLI so that binary exists on that path.
 
 ## Environment variables
 
@@ -84,12 +103,23 @@ sensitive is written to disk. Export these before launching a harness:
 | `PYTHONIOENCODING`             | `office-mcp`           | Python I/O encoding. **Required**; must be `utf-8` or the server breaks on non-ASCII output |
 
 ```sh
+# Linux / macOS / WSL
 export GITHUB_PERSONAL_ACCESS_TOKEN=ghp_...   # or pull from a secret manager
 export DEFAULT_ENGRAM_PROJECT=my-project
 export FASTMCP_LOG_LEVEL=ERROR                # optional; DEBUG/INFO/WARNING/ERROR
 export UV_HTTP_TIMEOUT=300                     # optional; only used by the disabled linkedin server
 export PYTHONUTF8=1                            # required by office-mcp
 export PYTHONIOENCODING=utf-8                  # required by office-mcp
+```
+
+```powershell
+# Windows (PowerShell) — current session (use setx NAME "value" to persist)
+$env:GITHUB_PERSONAL_ACCESS_TOKEN = "ghp_..."
+$env:DEFAULT_ENGRAM_PROJECT = "my-project"
+$env:FASTMCP_LOG_LEVEL = "ERROR"               # optional
+$env:UV_HTTP_TIMEOUT = "300"                    # optional; only used by the disabled linkedin server
+$env:PYTHONUTF8 = "1"                           # required by office-mcp
+$env:PYTHONIOENCODING = "utf-8"                 # required by office-mcp
 ```
 
 ## Notes

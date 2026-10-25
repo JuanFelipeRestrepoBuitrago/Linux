@@ -1,9 +1,12 @@
 # global-no-wsl
 
 Curated global APM config from `JuanFelipeRestrepoBuitrago/Linux`, **without** the
-`wsl-environment` instruction — for native Linux/macOS where the WSL guidance doesn't apply.
-8 core instructions, 5 workflow skills, 1 agent, and 3 MCP servers. The shared
+`wsl-environment` instruction — for native Linux, macOS, or Windows where the WSL guidance
+doesn't apply. 8 core instructions, 5 workflow skills, 1 agent, and 3 MCP servers. The shared
 `../permissions.yaml` is a permissive Kiro permission set you can copy alongside it.
+
+Works on Linux (bash/zsh), macOS, and Windows (PowerShell) — install/env commands below are
+given per OS.
 
 Variant note: this is the full set minus WSL. If you run under WSL, use `../global`. For
 engram, use `../global-no-wsl-engram`.
@@ -22,7 +25,15 @@ engram, use `../global-no-wsl-engram`.
 ### 1. APM CLI
 
 ```sh
+# macOS (Homebrew)
+brew install apm
+# Linux / macOS / WSL (no Homebrew)
 curl -sSL https://aka.ms/apm-unix | sh
+```
+
+```powershell
+# Windows (PowerShell)
+irm https://aka.ms/apm-windows | iex
 ```
 
 Verify: `apm --version`.
@@ -32,7 +43,13 @@ Verify: `apm --version`.
 Both stdio servers launch via `uvx`, which ships with `uv`.
 
 ```sh
+# Linux / macOS / WSL
 curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+```powershell
+# Windows (PowerShell)
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
 ```
 
 See https://docs.astral.sh/uv/getting-started/installation/. The server packages
@@ -49,8 +66,21 @@ needs `GITHUB_PERSONAL_ACCESS_TOKEN` (see Environment variables).
 `read_document` and `read_image` work with just `uvx`. The `extract_slides_as_images`
 capability additionally needs:
 
-- **LibreOffice** — for PPTX/PPT rendering: `sudo apt install -y libreoffice`
-- **poppler-utils** — for PDF rendering: `sudo apt install -y poppler-utils`
+- **LibreOffice** — for PPTX/PPT rendering
+- **poppler-utils** — for PDF rendering
+
+```sh
+# Debian/Ubuntu/WSL
+sudo apt install -y libreoffice poppler-utils
+# macOS (Homebrew)
+brew install --cask libreoffice && brew install poppler
+```
+
+```powershell
+# Windows (winget)
+winget install TheDocumentFoundation.LibreOffice
+# poppler: install via scoop/chocolatey (e.g. `choco install poppler`) or the poppler-windows release
+```
 
 Skip this if you don't extract slides/pages as images.
 
@@ -76,8 +106,16 @@ Verify: `graphify --version`. Skip if you won't use the Graphify skill.
 | `FASTMCP_LOG_LEVEL`            | `document-loader` | Log level for the document-loader server. Optional tuning; recommended `ERROR`. |
 
 ```sh
+# Linux / macOS / WSL
 export GITHUB_PERSONAL_ACCESS_TOKEN=ghp_...   # or pull from a secret manager
 export FASTMCP_LOG_LEVEL=ERROR                # optional; DEBUG/INFO/WARNING/ERROR
+```
+
+```powershell
+# Windows (PowerShell) — current session
+$env:GITHUB_PERSONAL_ACCESS_TOKEN = "ghp_..."
+$env:FASTMCP_LOG_LEVEL = "ERROR"
+# persist across sessions: setx GITHUB_PERSONAL_ACCESS_TOKEN "ghp_..."
 ```
 
 ## Install
