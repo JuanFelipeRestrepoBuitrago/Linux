@@ -98,7 +98,7 @@ dependencies:
           args:
               - awslabs.document-loader-mcp-server@latest
           env:
-              FASTMCP_LOG_LEVEL: ERROR
+              FASTMCP_LOG_LEVEL: ${FASTMCP_LOG_LEVEL}
 
         # fetch — stdio, enabled.
         - name: fetch

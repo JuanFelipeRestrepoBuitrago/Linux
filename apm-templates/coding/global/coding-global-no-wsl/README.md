@@ -52,12 +52,14 @@ PyPI package `graphifyy` (double-y), command `graphify`, Python 3.10+:
 
 ## Environment variables
 
-| Variable                       | Used by  | Purpose                                          |
-| ------------------------------ | -------- | ------------------------------------------------ |
-| `GITHUB_PERSONAL_ACCESS_TOKEN` | `github` | Bearer token for the GitHub Copilot MCP endpoint |
+| Variable                       | Used by           | Purpose                                                                         |
+| ------------------------------ | ----------------- | ------------------------------------------------------------------------------- |
+| `GITHUB_PERSONAL_ACCESS_TOKEN` | `github`          | Bearer token for the GitHub Copilot MCP endpoint                                |
+| `FASTMCP_LOG_LEVEL`            | `document-loader` | Log level for the document-loader server. Optional tuning; recommended `ERROR`. |
 
 ```sh
 export GITHUB_PERSONAL_ACCESS_TOKEN=ghp_...   # or pull from a secret manager
+export FASTMCP_LOG_LEVEL=ERROR                # optional; DEBUG/INFO/WARNING/ERROR
 ```
 
 ## Install

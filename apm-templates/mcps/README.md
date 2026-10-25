@@ -73,15 +73,23 @@ exists on that path.
 APM keeps secrets as `${VAR}` in the config and resolves them at server start, so nothing
 sensitive is written to disk. Export these before launching a harness:
 
-| Variable                       | Used by                | Purpose                                             |
-| ------------------------------ | ---------------------- | --------------------------------------------------- |
-| `GITHUB_PERSONAL_ACCESS_TOKEN` | `github`               | Bearer token for the GitHub Copilot MCP endpoint    |
-| `DEFAULT_ENGRAM_PROJECT`       | `engram`               | project scope passed to `engram --project`          |
-| `HOME`                         | `office-mcp`, `engram` | resolves the binary/script paths (set by the shell) |
+| Variable                       | Used by                | Purpose                                                                                     |
+| ------------------------------ | ---------------------- | ------------------------------------------------------------------------------------------- |
+| `GITHUB_PERSONAL_ACCESS_TOKEN` | `github`               | Bearer token for the GitHub Copilot MCP endpoint                                            |
+| `DEFAULT_ENGRAM_PROJECT`       | `engram`               | project scope passed to `engram --project`                                                  |
+| `HOME`                         | `office-mcp`, `engram` | resolves the binary/script paths (set by the shell)                                         |
+| `FASTMCP_LOG_LEVEL`            | `document-loader`      | log level for the server. Optional tuning; recommended `ERROR`                              |
+| `UV_HTTP_TIMEOUT`              | `linkedin`             | uvx HTTP timeout in seconds. Optional tuning; recommended `300`                             |
+| `PYTHONUTF8`                   | `office-mcp`           | Python UTF-8 mode. **Required**; must be `1` or the server breaks on non-ASCII output       |
+| `PYTHONIOENCODING`             | `office-mcp`           | Python I/O encoding. **Required**; must be `utf-8` or the server breaks on non-ASCII output |
 
 ```sh
 export GITHUB_PERSONAL_ACCESS_TOKEN=ghp_...   # or pull from a secret manager
 export DEFAULT_ENGRAM_PROJECT=my-project
+export FASTMCP_LOG_LEVEL=ERROR                # optional; DEBUG/INFO/WARNING/ERROR
+export UV_HTTP_TIMEOUT=300                     # optional; only used by the disabled linkedin server
+export PYTHONUTF8=1                            # required by office-mcp
+export PYTHONIOENCODING=utf-8                  # required by office-mcp
 ```
 
 ## Notes

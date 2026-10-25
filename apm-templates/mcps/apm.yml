@@ -9,8 +9,12 @@
 #     both; other targets may ignore them. See .agents/apm/research.md §6.
 #   - autoApprove: [] (document-loader) equals the default empty allowlist and
 #     has no APM equivalent, so it is dropped (no behavior change).
-#   - Secrets stay as ${VAR}; Kiro/Copilot resolve at server start. Export
-#     GITHUB_PERSONAL_ACCESS_TOKEN and DEFAULT_ENGRAM_PROJECT in your env.
+#   - Secrets, tunables, and runtime flags stay as ${VAR}; Kiro/Copilot resolve
+#     at server start. Export GITHUB_PERSONAL_ACCESS_TOKEN, DEFAULT_ENGRAM_PROJECT,
+#     the optional tunables FASTMCP_LOG_LEVEL (recommended ERROR) and
+#     UV_HTTP_TIMEOUT (recommended 300), and the office-mcp runtime flags
+#     PYTHONUTF8 (must be 1) and PYTHONIOENCODING (must be utf-8) in your env.
+#     office-mcp breaks on non-ASCII output if the last two are unset. See README.md.
 #   - powers.mcpServers.power-context7-context7 is a Kiro *power*, not a user MCP
 #     server — out of scope, not packaged.
 #
@@ -251,7 +255,7 @@ dependencies:
           args:
               - mcp-server-linkedin@latest
           env:
-              UV_HTTP_TIMEOUT: '300'
+              UV_HTTP_TIMEOUT: ${UV_HTTP_TIMEOUT}
           disabled: true
 
         # document-loader — stdio, enabled. Source autoApprove:[] dropped (default).
@@ -262,7 +266,7 @@ dependencies:
           args:
               - awslabs.document-loader-mcp-server@latest
           env:
-              FASTMCP_LOG_LEVEL: ERROR
+              FASTMCP_LOG_LEVEL: ${FASTMCP_LOG_LEVEL}
 
         # office-mcp — stdio, enabled. ${HOME} refs resolved by the harness.
         - name: office-mcp
@@ -272,8 +276,8 @@ dependencies:
           args:
               - ${HOME}/tools/office-mcp/server.py
           env:
-              PYTHONUTF8: '1'
-              PYTHONIOENCODING: utf-8
+              PYTHONUTF8: ${PYTHONUTF8}
+              PYTHONIOENCODING: ${PYTHONIOENCODING}
               OFFICE_MCP_DEFAULT_FOLDER: ${HOME}
 
         # aws-mcp — stdio, disabled.
